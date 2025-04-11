@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
       topBtn?.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+    // Auto-update copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
 });  
       // Dark mode toggle
       // const setTheme = (mode) => {
