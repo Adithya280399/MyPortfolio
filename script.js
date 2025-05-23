@@ -16,17 +16,29 @@ document.addEventListener("DOMContentLoaded", () => {
       (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
     }
-    // Toggle menu
-    document.getElementById('menu-btn')?.addEventListener('click', () => {
-        const menu = document.getElementById('menu');
-        menu.classList.toggle('hidden');
-      });
+  // Elements for menu
+  const menuBtn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
 
-      document.addEventListener('click', (event) => {
-        if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
-          menu.classList.add('hidden');
-        }
-      });
+  // Toggle menu on button click
+  menuBtn?.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent click from bubbling to document
+    menu.classList.toggle('hidden');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (event) => {
+    if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+      menu.classList.add('hidden');
+    }
+  });
+
+  // Close menu when clicking any menu link
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+    });
+  });
       // Back to top button
       const topBtn = document.getElementById('top-btn');
       window.addEventListener('scroll', () => {
