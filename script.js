@@ -39,14 +39,30 @@ document.addEventListener("DOMContentLoaded", () => {
       menu.classList.add('hidden');
     });
   });
-      // Back to top button
-      const topBtn = document.getElementById('top-btn');
-      window.addEventListener('scroll', () => {
-        topBtn.classList.toggle('hidden', window.scrollY < 300);
-      });
-      topBtn?.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+  // Back to top button
+  const topBtn = document.getElementById('top-btn');
+  window.addEventListener('scroll', () => {
+  topBtn.classList.toggle('hidden', window.scrollY < 300);
+  });
+  topBtn?.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  topBtn?.addEventListener('click', () => {
+  topBtn.classList.add('animate-ping');
+  setTimeout(() => {
+    topBtn.classList.remove('animate-ping');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 200); // add small delay before scrolling
+});
+
+//cursor light
+const cursorLight = document.getElementById('cursor-light');
+
+document.addEventListener('mousemove', (e) => {
+  cursorLight.style.top = `${e.clientY}px`;
+  cursorLight.style.left = `${e.clientX}px`;
+});
+
     // Auto-update copyright year
     document.getElementById("year").textContent = new Date().getFullYear();
 });  
