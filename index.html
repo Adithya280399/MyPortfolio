@@ -31,10 +31,71 @@
       transform: translate(-50%, -50%);
       transition: background 0.3s ease;
     }
+    .particle-wave-loader {
+      position: relative;
+      width: 120px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .particle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #c76e16;
+      animation: wave 1.5s ease-in-out infinite;
+      transform: translateY(0);
+    }
+
+    .particle:nth-child(1) { left: 0; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 15px; animation-delay: 0.1s; }
+    .particle:nth-child(3) { left: 30px; animation-delay: 0.2s; }
+    .particle:nth-child(4) { left: 45px; animation-delay: 0.3s; }
+    .particle:nth-child(5) { left: 60px; animation-delay: 0.4s; }
+    .particle:nth-child(6) { left: 75px; animation-delay: 0.5s; }
+    .particle:nth-child(7) { left: 90px; animation-delay: 0.6s; }
+    .particle:nth-child(8) { left: 105px; animation-delay: 0.7s; }
+
+    @keyframes wave {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    .loading-dots::after {
+      content: '...';
+      animation: dots 1.5s steps(5, end) infinite;
+    }
+
+    @keyframes dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
+    }
   </style>
 </head>
 <body class="font-sans scroll-smooth transition-colors duration-500 text-gray-900" style="background-color: #d0d0d0;">
   <div id="cursor-light"></div>
+  <!-- Loader -->
+  <div id="loader" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-white transition-opacity duration-500">
+    <div class="particle-wave-loader">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    <h1 class="mt-8 text-xl sm:text-2xl font-mono text-center">
+      <span class="loading-text">Initializing Adithya's Portfolio</span>
+      <span class="loading-dots">...</span>
+    </h1>
+  </div> 
+
   <!-- Navigation -->
   <nav class="w-full">
     <!-- Fixed inner content -->

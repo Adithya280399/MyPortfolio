@@ -1,3 +1,29 @@
+document.addEventListener('DOMContentLoaded', function() {
+  // Wait for everything to load
+  window.addEventListener('load', function() {
+    // Fade out loader
+    const loader = document.getElementById('loader');
+    if (loader) {
+      loader.style.opacity = '0';
+      
+      // Remove loader after fade out completes
+      setTimeout(function() {
+        loader.style.display = 'none';
+      }, 500); // Match this with the CSS transition duration
+    }
+  });
+  
+  // Fallback in case load event doesn't fire
+  setTimeout(function() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+      loader.style.opacity = '0';
+      setTimeout(function() {
+        loader.style.display = 'none';
+      }, 500);
+    }
+  }, 4000); // Maximum 4 seconds wait time
+});
 document.addEventListener("DOMContentLoaded", () => {
   // Feather icons
   feather.replace();
@@ -63,7 +89,7 @@ document.addEventListener('mousemove', (e) => {
   cursorLight.style.left = `${e.clientX}px`;
 });
 
-    // Auto-update copyright year
+// Auto-update copyright year
     document.getElementById("year").textContent = new Date().getFullYear();
 });  
       // Dark mode toggle
