@@ -39,7 +39,7 @@
       transform: scaleX(1);
       transform-origin: bottom left;
     }
-    
+
     #cursor-light {
       position: fixed;
       top: 0;
@@ -122,11 +122,16 @@
   <!-- Navigation -->
   <nav class="w-full">
     <!-- Fixed inner content -->
-  <div class="fixed top-0 left-0 w-full z-50 py-4 px-6 text-blue-600 flex justify-between items-center">
+  <div class="fixed top-0 left-0 w-full z-50 py-4 px-6 flex justify-between items-center">
     <h1 class="text-lg font-bold fade-in">
-      <a href="#hero" class="block transition-transform transform hover:scale-105 rounded">Adithya Suresh’s Portfolio</a></h1>
+      <a href="#hero" class="text-red-400 block transition-transform transform hover:scale-125 rounded">AS
+        <p class="text-sm text-blue-600">
+          Portfolio
+        </p>
+      </a>
+    </h1>
     <div class="transition-transform transform hover:scale-125">
-      <button id="menu-btn" class="text-lg font-bold relative z-50 fade-in">☰</button>
+      <button id="menu-btn" class="text-lg text-blue-600 font-bold relative z-50 fade-in">☰</button>
     </div>
   </div>
   </nav>
