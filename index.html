@@ -17,6 +17,28 @@
       opacity: 1;
       transform: translateY(0);
     }
+    .underline-animation {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #3b82f6; /* blue-500 */
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
     #cursor-light {
       position: fixed;
       top: 0;
@@ -135,24 +157,11 @@
     </a>
   </section>
 
-  <!-- About
-  <section id="about" class="py-20 px-6 max-w-4xl mx-auto fade-in">
-    <h2 class="text-3xl font-bold mb-2 flex items-center gap-2 fade-in group relative">
-      <i data-feather="user" class="text-blue-500 w-6 h-6"></i>
-      <span class="relative inline-block">
-        About Me
-       <span class="absolute left-0 bottom-0 h-1 w-0 bg-blue-500 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-      </span>
-    </h2>
-    <p class="text-lg fade-in">
-     Innovative software engineer with a strong foundation in problem-solving and data science, currently pursuing a Master of Science in Information Science at the University of North Texas. Experienced in data modeling and visualization through hands-on projects. Previously held a Software Developer position at Ernst & Young, specializing in insurance domain solutions using Guidewire. Skilled in developing, monitoring, and evaluating system performance, as well as designing and implementing new programs and features. Passionate about leveraging domain knowledge to provide optimal solutions. A dedicated team player committed to continuous learning and technical growth, eager to apply my expertise to drive innovation and efficiency in software development.
-    </p>
-  </section> -->
-
+  <!-- AboutMe -->
   <section id="about" class="py-20 px-6 max-w-4xl mx-auto">
     <h2 class="text-3xl font-bold mb-8 flex items-center gap-2 fade-in">
       <i data-feather="user" class="text-blue-500 w-6 h-6"></i>
-      <!-- <span class="text-blue-500">01.</span>--> About Me 
+      <span class="underline-animation">About Me</span>
     </h2>
     <div class="grid md:grid-cols-5 gap-8">
       <div class="md:col-span-3 fade-in">
@@ -183,7 +192,8 @@
   <!-- Experience Section -->
   <section id="experience" class="py-20 px-6 max-w-4xl mx-auto fade-in">
     <h2 class="text-3xl font-bold mb-2 flex items-center gap-2 fade-in">
-      <i data-feather="briefcase" class="text-blue-500 w-6 h-6"></i>Experience
+      <i data-feather="briefcase" class="text-blue-500 w-6 h-6"></i>
+      <span class="underline-animation">Experience</span>
     </h2>
   
       <!-- Experience Card 1 -->
@@ -221,7 +231,8 @@
   <!-- Skills -->
   <section id="skills" class="py-20 px-6 max-w-4xl mx-auto fade-in">
     <h2 class="text-3xl font-bold mb-6 flex items-center gap-2">
-      <i data-feather="cpu" class="text-blue-500 w-6 h-6"></i>Skills
+      <i data-feather="cpu" class="text-blue-500 w-6 h-6"></i>
+      <span class="underline-animation">Skills</span>
     </h2>
     <div class="grid md:grid-cols-2 gap-6">
 
@@ -309,7 +320,8 @@
   <!-- Education -->
   <section id="education" class="py-20 px-6 max-w-4xl mx-auto fade-in">
     <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
-      <i data-feather="book-open" class="text-blue-500 w-6 h-6"></i>Education
+      <i data-feather="book-open" class="text-blue-500 w-6 h-6"></i>
+      <span class="underline-animation">Education</span>
     </h2>
     <ul class="mt-2">
       <li><strong>Master of Science - Information science</strong> - University of North Texas (Expected 2026)</li>
@@ -319,7 +331,8 @@
 
   <!-- Projects -->
   <section id="projects" class="py-20 px-6 max-w-4xl mx-auto fade-in">
-    <h2 class="text-3xl font-bold text-center mb-6">Projects</h2>
+    <h2 class="text-3xl font-bold text-center mb-6">
+      <span class="underline-animation">Projects</span></h2>
   
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- Project Card -->
@@ -374,7 +387,8 @@
   <!-- Certifications -->
   <section id="certifications" class="py-20 px-6 max-w-4xl mx-auto fade-in">
     <h2 class="text-3xl font-bold flex items-center gap-2">
-      <i data-feather="award" class="text-blue-500 w-6 h-6"></i>Certifications
+      <i data-feather="award" class="text-blue-500 w-6 h-6"></i>
+      <span class="underline-animation">Certifications</span>
     </h2>
     <ul class="mt-2">
       <li><strong>Specialist Certification - Claimcenter 10.0 Configuration </strong> - Guidewire</li>
@@ -389,7 +403,8 @@
   <!-- Awards -->
   <section id="awards" class="py-20 px-6 max-w-4xl mx-auto fade-in">
     <h2 class="text-3xl font-bold flex items-center gap-2">
-      <i data-feather="star" class="text-yellow-500 w-6 h-6"></i>Awards
+      <i data-feather="star" class="text-yellow-500 w-6 h-6"></i>
+      <span class="underline-animation">Awards</span>
     </h2>
     <ul class="mt-2 list-disc list-inside text-m space-y-2">
       <li><strong>Spot Award from EY</strong> for the dedication & perseverance to fulfill requirements and meet the targets on time</li>
@@ -399,7 +414,7 @@
 
   <!-- Contact -->
   <section id="contact" class="py-20 px-6 max-w-4xl mx-auto fade-in">
-    <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
+    <h2 class="text-3xl font-bold mb-4"><span class="underline-animation">Get in Touch</span></h2>
     <p class="text-lg mb-8 max-w-lg">
       I'm currently looking for software internship opportunities. Whether you have a question or just want to say hi, I'll do my best to get back to you!
     </p>
