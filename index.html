@@ -6,6 +6,9 @@
   <title>Adithya Suresh Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
   <style>
     .fade-in {
       opacity: 0;
@@ -336,79 +339,96 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="py-20 px-6 max-w-4xl mx-auto fade-in">
-    <h2 class="text-3xl font-bold text-center mb-6">
-      <span class="underline-animation">Projects</span></h2>
-  
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Project Card -->
-      <div class="bg-white rounded-xl shadow-md p-6 transition-transform transform hover:scale-105">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">Claim Management System</h3>
-            <p class="text-sm text-gray-500">Web-based insurance claim tracking</p>
+<!-- Projects -->
+
+<section id="projects" class="py-20 px-6 max-w-6xl mx-auto fade-in">
+  <h2 class="text-3xl font-bold text-center mb-10">
+    <span class="underline-animation">Projects</span>
+  </h2>
+
+  <div class="relative">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <!-- Project Card Example (Repeat for all cards) -->
+        <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold mb-1">Claim Management System</h3>
+              <p class="text-sm text-gray-500">Web-based insurance claim tracking</p>
+            </div>
+            <a href="https://github.com/Adithya280399/Claim-Management-System" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white">
+              <i data-feather="github"></i>
+            </a>
           </div>
-          <a href="https://github.com/Adithya280399/Claim-Management-System" target="_blank" class="text-gray-500 hover:text-gray-700">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-          </svg>
-          </a>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            Developed a web-based system for managing insurance claims efficiently, enabling automated tracking, approvals, and audit logging.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-blue-200 cursor-pointer">MySQL</span>
+            <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-green-200 cursor-pointer">Draw.io</span>
+            <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-200 cursor-pointer">Excel</span>
+          </div>
         </div>
-        <p class="mb-3 text-sm text-gray-600 dark:text-gray-300">
-          Developed a web-based system for managing insurance claims efficiently, enabling automated tracking, approvals, and audit logging.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-blue-100 text-blue-800 dark:bg-blue-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">MySQL</span>
-          <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">Draw.io</span>
-          <span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">Excel</span>
+
+        <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold mb-1">AI Blog genrator</h3>
+              <p class="text-sm text-gray-500">Genrates blog posts using keywords</p>
+            </div>
+            <a href="https://github.com/Adithya280399/ai-blog-generator-Adithya" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white">
+              <i data-feather="github"></i>
+            </a>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            An AI-powered Flask web app that generates SEO-optimized blog posts daily using OpenAI and serves browser-friendly previews with automated scheduling.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-blue-200 cursor-pointer">Python</span>
+            <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-green-200 cursor-pointer">OpenAi</span>
+            <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-200 cursor-pointer">Flask</span>
+          </div>
         </div>
+
+        <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold mb-1">My Portfolio</h3>
+              <p class="text-sm text-gray-500">E-portfolio</p>
+            </div>
+            <a href="https://github.com/Adithya280399/MyPortfolio" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white">
+              <i data-feather="github"></i>
+            </a>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            Developed my portfolio to project my skills and experience using the skills I have gained.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-blue-200 cursor-pointer">HTML</span>
+            <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-green-200 cursor-pointer">Tailwind CDN</span>
+            <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-200 cursor-pointer">JavaScript</span>
+          </div>
+        </div>
+        <!-- Repeat for other project cards -->
+
       </div>
 
-      <div class="bg-white rounded-xl shadow-md p-6 transition-transform transform hover:scale-105">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">AI Blog genrator</h3>
-            <p class="text-sm text-gray-500">Genrates blog posts using keywords</p>
-          </div>
-          <a href="https://github.com/Adithya280399/Claim-Management-System" target="_blank" class="text-gray-500 hover:text-gray-700">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-          </svg>
-          </a>
-        </div>
-        <p class="mb-3 text-sm text-gray-600 dark:text-gray-300">
-          An AI-powered Flask web app that generates SEO-optimized blog posts daily using OpenAI and serves browser-friendly previews with automated scheduling.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-blue-100 text-blue-800 dark:bg-blue-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">Python</span>
-          <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">OpenAI</span>
-          <span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">Flask</span>
+      <!-- Custom Controls
+      <div class="absolute top-1/2 -translate-y-1/2 left-0 z-10">
+        <div class="swiper-button-prev bg-gray-100 dark:bg-gray-700 p-2 rounded-full shadow-md hover:scale-110 transition">
+          <i data-feather="chevron-left" class="text-black dark:text-white"></i>
         </div>
       </div>
+      <div class="absolute top-1/2 -translate-y-1/2 right-0 z-10">
+        <div class="swiper-button-next bg-gray-100 dark:bg-gray-700 p-2 rounded-full shadow-md hover:scale-110 transition">
+          <i data-feather="chevron-right" class="text-black dark:text-white"></i>
+        </div>
+      </div> -->
 
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 transition-transform transform hover:scale-105">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h3 class="text-xl font-semibold mb-2">My Portfolio</h3>
-            <p class="text-sm text-gray-500">E-portfolio</p>
-          </div>
-          <a href="https://github.com/Adithya280399/MyPortfolio" target="_blank" class="text-gray-500 hover:text-gray-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-            </svg>
-          </a>
-        </div>
-        <p class="mb-3 text-sm text-gray-600 dark:text-gray-300">
-          Developed my portfolio to project my skills and experience using the skills I have gained.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-blue-100 text-blue-800 dark:bg-blue-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">HTML</span>
-          <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">Tailwind CDN</span>
-          <span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">Javascript</span>
-        </div>
+      <!-- Pagination Dots -->
+      <div class="swiper-pagination mt-6 !bottom-0 flex justify-bottom"></div>
       </div>
-      <!-- Add more project cards below following the same structure -->
-      <!-- Future projects can be added easily by duplicating the block above -->
     </div>
   </section>
 
@@ -484,7 +504,36 @@
       <i class="fas fa-rocket" style="transform: rotate(-45deg);"></i>
     </button> 
   <script src="https://unpkg.com/feather-icons"></script>
-  <script src="script.js">
-  </script>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- Feather Icons -->
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+  const swiper = new Swiper('.mySwiper', {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    loop: true,
+    grabCursor: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+    },
+  });
+
+  feather.replace();
+</script>
+<script src="script.js">
+</script>
 </body>
 </html>
