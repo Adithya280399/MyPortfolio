@@ -354,6 +354,26 @@
         <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
           <div class="flex justify-between items-start mb-4">
             <div>
+              <h3 class="text-xl font-semibold mb-1">AI Blog genrator</h3>
+              <p class="text-sm text-gray-500">Genrates blog posts using keywords</p>
+            </div>
+            <a href="https://github.com/Adithya280399/ai-blog-generator-Adithya" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white">
+              <i data-feather="github"></i>
+            </a>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            An AI-powered Flask web app that generates SEO-optimized blog posts daily using OpenAI and serves browser-friendly previews with automated scheduling.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-blue-200 cursor-pointer">Python</span>
+            <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-green-200 cursor-pointer">OpenAi</span>
+            <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-200 cursor-pointer">Flask</span>
+          </div>
+        </div>
+        
+        <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
+          <div class="flex justify-between items-start mb-4">
+            <div>
               <h3 class="text-xl font-semibold mb-1">Claim Management System</h3>
               <p class="text-sm text-gray-500">Web-based insurance claim tracking</p>
             </div>
@@ -371,25 +391,7 @@
           </div>
         </div>
 
-        <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-          <div class="flex justify-between items-start mb-4">
-            <div>
-              <h3 class="text-xl font-semibold mb-1">AI Blog genrator</h3>
-              <p class="text-sm text-gray-500">Genrates blog posts using keywords</p>
-            </div>
-            <a href="https://github.com/Adithya280399/ai-blog-generator-Adithya" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white">
-              <i data-feather="github"></i>
-            </a>
-          </div>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-            An AI-powered Flask web app that generates SEO-optimized blog posts daily using OpenAI and serves browser-friendly previews with automated scheduling.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-blue-200 cursor-pointer">Python</span>
-            <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-green-200 cursor-pointer">OpenAi</span>
-            <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-200 cursor-pointer">Flask</span>
-          </div>
-        </div>
+
 
         <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
           <div class="flex justify-between items-start mb-4">
@@ -513,7 +515,7 @@
   const swiper = new Swiper('.mySwiper', {
     slidesPerView: 1,
     spaceBetween: 24,
-    loop: true,
+    loop: false,
     grabCursor: true,
     pagination: {
       el: '.swiper-pagination',
