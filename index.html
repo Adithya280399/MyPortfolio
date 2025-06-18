@@ -43,6 +43,26 @@
       transform-origin: bottom left;
     }
 
+
+    .rainbow-text {
+    background: linear-gradient(to right,rgb(239, 158, 27), rgb(239, 158, 27), rgb(212, 140, 14), rgb(72, 188, 226), rgb(72, 188, 226), rgb(153, 68, 45), rgb(153, 68, 45));
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbowMove 6s linear infinite;
+    }
+
+    @keyframes rainbowMove {
+    0% { background-position: 0% }
+    100% { background-position: 100% }
+    }
+
+
+    @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+    }
+
     #cursor-light {
       position: fixed;
       top: 0;
@@ -155,9 +175,9 @@
   <section id="hero" class="h-screen flex flex-col justify-center items-center text-white text-center" style="background-color: #000000cc;">
     <!-- <img src="images/profilepic.jpg" alt="Adithya Suresh" class="w-40 h-52 rounded-full border-4 border-white shadow-lg fade-in"/> -->
     <h1 class="text-5xl font-bold mt-4 fade-in">Hi, I'm Adithya Suresh</h1>
-    <h2 class="text-2xl text-blue-600 mt-2 mb-6 fade-in">Software Engineer</h2>
+    <h2 class="text-2xl mt-2 mb-6 fade-in font-bold rainbow-text">Software Engineer</h2>
       <p class="text-lg text-white-600 mb-8 fade-in">
-        I build robust, scalable software solutions with a focus on insurance domain expertise.
+        Engineer by experience, innovator by mindset — crafting robust software with cloud, data, and code at its core.
       </p>
     <a href="AdithyaSuresh_Resume.pdf" download class="mt-6 bg-blue-500 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition fade-in">
       </i>Download Resume</a>
