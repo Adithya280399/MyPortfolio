@@ -43,7 +43,6 @@
       transform-origin: bottom left;
     }
 
-
     .rainbow-text {
     background: linear-gradient(to right,rgb(239, 158, 27), rgb(239, 158, 27), rgb(212, 140, 14), rgb(72, 188, 226), rgb(72, 188, 226), rgb(153, 68, 45), rgb(153, 68, 45));
     background-size: 400%;
@@ -120,6 +119,50 @@
       40% { content: '..'; }
       60%, 100% { content: '...'; }
     }
+
+  /* CSS Arrow Styles */
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid #555; /* Arrow color */
+    border-left: 2px solid #555; /* Arrow color */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+
+  .swiper-button-prev::after {
+    transform: translate(-50%, -50%) rotate(-45deg); /* Left arrow */
+  }
+
+  .swiper-button-next::after {
+    transform: translate(-50%, -50%) rotate(135deg); /* Right arrow */
+  }
+
+  /* Hide default Swiper arrows */
+  .swiper-button-prev.swiper-button-disabled,
+  .swiper-button-next.swiper-button-disabled {
+    opacity: 0.35;
+  }
+  
+  /* Hide arrows on mobile */
+  @media (max-width: 768px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
+  }
+
+/* Hide arrows on mobile */
+@media (max-width: 767px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+}
   </style>
 </head>
 <body class="font-sans scroll-smooth transition-colors duration-500 text-gray-900" style="background-color: #d0d0d0;">
@@ -367,6 +410,9 @@
   </h2>
 
   <div class="relative">
+    <div class="swiper-button-prev !left-0 !w-10 !h-10 !bg-white !rounded-full !shadow-md hover:!bg-gray-100"></div>
+    <div class="swiper-button-next !right-0 !w-10 !h-10 !bg-white !rounded-full !shadow-md hover:!bg-gray-100"></div>
+    <div class="swiper-container overflow-visible">
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
 
@@ -434,8 +480,6 @@
           </div>
         </div>
 
-
-
         <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
           <div class="flex justify-between items-start mb-4">
             <div>
@@ -458,19 +502,7 @@
         <!-- Repeat for other project cards -->
 
       </div>
-
-      <!-- Custom Controls
-      <div class="absolute top-1/2 -translate-y-1/2 left-0 z-10">
-        <div class="swiper-button-prev bg-gray-100 dark:bg-gray-700 p-2 rounded-full shadow-md hover:scale-110 transition">
-          <i data-feather="chevron-left" class="text-black dark:text-white"></i>
-        </div>
-      </div>
-      <div class="absolute top-1/2 -translate-y-1/2 right-0 z-10">
-        <div class="swiper-button-next bg-gray-100 dark:bg-gray-700 p-2 rounded-full shadow-md hover:scale-110 transition">
-          <i data-feather="chevron-right" class="text-black dark:text-white"></i>
-        </div>
-      </div> -->
-
+  </div>
       <!-- Pagination Dots -->
       <div class="swiper-pagination mt-6 !bottom-0 flex justify-bottom"></div>
       </div>
