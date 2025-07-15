@@ -163,6 +163,44 @@
     display: none !important;
   }
 }
+
+ /* Scroll Down Indicator Styles */
+.mouse-scroll {
+  width: 30px;
+  height: 30px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+  animation: pulse 2s infinite;
+}
+  
+  .mouse-scroll::before {
+    content: '';
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollDown 2s infinite;
+  }
+  
+  @keyframes scrollDown {
+    0% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, 12px); }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+  }
+  
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
   </style>
 </head>
 <body class="font-sans scroll-smooth transition-colors duration-500 text-gray-900" style="background-color: #d0d0d0;">
@@ -227,6 +265,14 @@
     <a href="#about" class="mt-3 bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-700 transition fade-in">
       Learn More
     </a>
+
+  <!-- Scroll Down Indicator -->
+  <!-- Scroll Down Indicator -->
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 fade-in">
+    <a href="#about" class="block animate-bounce">
+      <div class="mouse-scroll"></div>
+    </a>
+  </div>
   </section>
 
   <!-- AboutMe -->
