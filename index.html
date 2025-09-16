@@ -120,49 +120,68 @@
       60%, 100% { content: '...'; }
     }
 
-  /* CSS Arrow Styles */
-  .swiper-button-prev::after,
-  .swiper-button-next::after {
-    content: '';
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-top: 2px solid #555; /* Arrow color */
-    border-left: 2px solid #555; /* Arrow color */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-  }
+     /* Fixed Swiper Styles */
+    .projects-swiper {
+      width: 100%;
+      padding: 20px 0 60px 0;
+    }
 
-  .swiper-button-prev::after {
-    transform: translate(-50%, -50%) rotate(-45deg); /* Left arrow */
-  }
+    .projects-swiper .swiper-slide {
+      height: auto;
+      display: flex;
+    }
 
-  .swiper-button-next::after {
-    transform: translate(-50%, -50%) rotate(135deg); /* Right arrow */
-  }
+    .project-card {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
 
-  /* Hide default Swiper arrows */
-  .swiper-button-prev.swiper-button-disabled,
-  .swiper-button-next.swiper-button-disabled {
-    opacity: 0.35;
-  }
-  
-  /* Hide arrows on mobile */
-  @media (max-width: 768px) {
+    /* Custom navigation buttons */
     .swiper-button-prev,
     .swiper-button-next {
-      display: none;
+      width: 44px;
+      height: 44px;
+      margin-top: -22px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      color: #6b7280;
     }
-  }
 
-/* Hide arrows on mobile */
-@media (max-width: 767px) {
-  .swiper-button-prev,
-  .swiper-button-next {
-    display: none !important;
-  }
-}
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    /* Pagination styles */
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: #d1d5db;
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #3b82f6;
+    }
+
+    /* Hide arrows on mobile */
+    @media (max-width: 767px) {
+      .swiper-button-prev,
+      .swiper-button-next {
+        display: none !important;
+      }
+    }
 
  /* Scroll Down Indicator Styles */
 .mouse-scroll {
@@ -464,130 +483,124 @@
   </section>
 
   <!-- Projects -->
-<!-- Projects -->
+  <section id="projects" class="py-20 px-6 max-w-6xl mx-auto fade-in">
+    <h2 class="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-2">
+      <i class="fas fa-code text-blue-500"></i>
+      <span class="underline-animation">Projects</span>
+    </h2>
 
-<section id="projects" class="py-20 px-6 max-w-6xl mx-auto fade-in">
-  <h2 class="text-3xl font-bold text-center mb-10">
-    <span class="underline-animation">Projects</span>
-  </h2>
-
-  <div class="relative">
-    <div class="swiper-button-prev !left-0 !w-10 !h-10 !bg-white !rounded-full !shadow-md hover:!bg-gray-100"></div>
-    <div class="swiper-button-next !right-0 !w-10 !h-10 !bg-white !rounded-full !shadow-md hover:!bg-gray-100"></div>
-    <div class="swiper-container overflow-visible">
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-
-        <!-- Project Card Example (Repeat for all cards) -->
-        <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-          <div class="flex justify-between items-start mb-4">
-            <div>
-              <h3 class="text-xl font-semibold mb-1">AI Blog genrator</h3>
-              <p class="text-sm text-gray-500">Genrates blog posts using keywords</p>
+    <!-- Swiper Container -->
+    <div class="relative">
+      <div class="swiper projects-swiper">
+        <div class="swiper-wrapper">
+          
+          <!-- Project Card 1 -->
+          <div class="swiper-slide">
+            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
+              <div class="flex justify-between items-start mb-4">
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold mb-2">AI Blog Generator</h3>
+                  <p class="text-sm text-gray-500 mb-3">Generates blog posts using keywords</p>
+                </div>
+                <a href="https://github.com/Adithya280399/ai-blog-generator-Adithya" target="_blank" 
+                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
+                  <i class="fab fa-github text-2xl"></i>
+                </a>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
+                An AI-powered Flask web app that generates SEO-optimized blog posts daily using OpenAI and serves browser-friendly previews with automated scheduling.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Python</span>
+                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">OpenAI</span>
+                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Flask</span>
+              </div>
             </div>
-            <a href="https://github.com/Adithya280399/ai-blog-generator-Adithya" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white">
-              <i data-feather="github"></i>
-            </a>
           </div>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-            An AI-powered Flask web app that generates SEO-optimized blog posts daily using OpenAI and serves browser-friendly previews with automated scheduling.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-blue-200 cursor-pointer">Python</span>
-            <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-green-200 cursor-pointer">OpenAi</span>
-            <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-200 cursor-pointer">Flask</span>
-          </div>
-        </div>
 
-        <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-          <div class="flex justify-between items-start mb-4">
-            <div>
-              <h3 class="text-xl font-semibold mb-1">Weather Forecast App</h3>
-              <p class="text-sm text-gray-500">Forecasts weather entering a location name/Pincode</p>
+          <!-- Project Card 2 -->
+          <div class="swiper-slide">
+            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
+              <div class="flex justify-between items-start mb-4">
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold mb-2">Weather Forecast App</h3>
+                  <p class="text-sm text-gray-500 mb-3">Forecasts weather entering a location name/Pincode</p>
+                </div>
+                <a href="https://github.com/Adithya280399/WeatherApp" target="_blank" 
+                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
+                  <i class="fab fa-github text-2xl"></i>
+                </a>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
+                A dynamic full-stack Weather App that fetches real-time and forecast data based on user input or geolocation, with persistent storage and CRUD features.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">HTML</span>
+                <span class="bg-purple-100 text-purple-800 dark:bg-purple-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
+                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+                <span class="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Express.js</span>
+                <span class="bg-pink-100 text-pink-800 dark:bg-pink-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
+              </div>
             </div>
-            <a href="https://github.com/Adithya280399/WeatherApp" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white">
-              <i data-feather="github"></i>
-            </a>
           </div>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-            A dynamic full-stack Weather App that fetches real-time and forecast data based on user input or geolocation, with persistent storage and CRUD features.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium">HTML</span>
-            <span class="bg-purple-100 text-purple-800 dark:bg-purple-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium">Tailwind CSS</span>
-            <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium">JavaScript</span>
-            <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">Node.js</span>
-            <span class="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium">Express.js</span>
-            <span class="bg-pink-100 text-pink-800 dark:bg-pink-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium">PostgreSQL</span>
+          
+          <!-- Project Card 3 -->
+          <div class="swiper-slide">
+            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
+              <div class="flex justify-between items-start mb-4">
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold mb-2">Claim Management System</h3>
+                  <p class="text-sm text-gray-500 mb-3">Web-based insurance claim tracking</p>
+                </div>
+                <a href="https://github.com/Adithya280399/Claim-Management-System" target="_blank" 
+                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
+                  <i class="fab fa-github text-2xl"></i>
+                </a>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
+                Developed a web-based system for managing insurance claims efficiently, enabling automated tracking, approvals, and audit logging.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
+                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Draw.io</span>
+                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Excel</span>
+              </div>
+            </div>
           </div>
+
+          <!-- Project Card 4 -->
+          <div class="swiper-slide">
+            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
+              <div class="flex justify-between items-start mb-4">
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold mb-2">My Portfolio</h3>
+                  <p class="text-sm text-gray-500 mb-3">E-portfolio</p>
+                </div>
+                <a href="https://github.com/Adithya280399/MyPortfolio" target="_blank" 
+                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
+                  <i class="fab fa-github text-2xl"></i>
+                </a>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
+                Developed my portfolio to project my skills and experience using the skills I have gained.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">HTML</span>
+                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Tailwind CDN</span>
+                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+              </div>
+            </div>
+          </div>
+
         </div>
         
-        <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-          <div class="flex justify-between items-start mb-4">
-            <div>
-              <h3 class="text-xl font-semibold mb-1">Claim Management System</h3>
-              <p class="text-sm text-gray-500">Web-based insurance claim tracking</p>
-            </div>
-            <a href="https://github.com/Adithya280399/Claim-Management-System" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white">
-              <i data-feather="github"></i>
-            </a>
-          </div>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-            Developed a web-based system for managing insurance claims efficiently, enabling automated tracking, approvals, and audit logging.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-blue-200 cursor-pointer">MySQL</span>
-            <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-green-200 cursor-pointer">Draw.io</span>
-            <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-200 cursor-pointer">Excel</span>
-          </div>
-        </div>
-
-
-      <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-          <div class="flex justify-between items-start mb-4">
-            <div>
-              <h3 class="text-xl font-semibold mb-1">My Portfolio</h3>
-              <p class="text-sm text-gray-500">E-portfolio</p>
-            </div>
-            <a href="https://github.com/Adithya280399/MyPortfolio" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white">
-              <i data-feather="github"></i>
-            </a>
-          </div>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-            Developed my portfolio to project my skills and experience using the skills I have gained.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-blue-200 cursor-pointer">HTML</span>
-            <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-green-200 cursor-pointer">Tailwind CDN</span>
-            <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-200 cursor-pointer">JavaScript</span>
-        </div>
-
-        </div>
-        <div class="swiper-slide bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-          <div class="flex justify-between items-start mb-4">
-            <div>
-              <h3 class="text-xl font-semibold mb-1">Fitness Tracker</h3>
-              <p class="text-sm text-gray-500">My Fitness tracker web app - current</p>
-            </div>
-            <a href="https://github.com/Adithya280399/FitnessTracker" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white">
-              <i data-feather="github"></i>
-            </a>
-          </div>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
-            I am currently working on this project in which I am trying to achieve an app which can be accessed in all the devices40% of the work is done.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-blue-200 cursor-pointer">Typescript</span>
-            <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-green-200 cursor-pointer">Tailwind CDN</span>
-            <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-2 py-1 rounded-full text-xs font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-200 cursor-pointer">JavaScript</span>
-          </div>
-        </div>
-        <!-- Repeat for other project cards -->
-
-      </div>
-  </div>
-      <!-- Pagination Dots -->
-      <div class="swiper-pagination mt-6 !bottom-0 flex justify-bottom"></div>
+        <!-- Navigation buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
       </div>
     </div>
   </section>
@@ -670,26 +683,53 @@
 <!-- Feather Icons -->
 <script src="https://unpkg.com/feather-icons"></script>
 <script>
-  const swiper = new Swiper('.mySwiper', {
-    slidesPerView: 1,
-    spaceBetween: 24,
-    loop: false,
-    grabCursor: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      dynamicBullets: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      768: {
-        slidesPerView: 2,
+      const swiper = new Swiper('.projects-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
       },
-    },
-  });
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+      },
+    });
+
+    // Add fade-in animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
 
   feather.replace();
 </script>
