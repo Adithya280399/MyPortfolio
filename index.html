@@ -220,7 +220,87 @@
   .animate-bounce {
     animation: bounce 2s infinite;
   }
-  </style>
+ 
+/* Accessible: respects reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .name-shine,
+  .insert-bar {
+    animation: none !important;
+    opacity: 1;
+  }
+}
+
+/* thin insert bar that moves left -> right */
+@keyframes bar-move {
+  0%   { left: 0%; }
+  100% { left: 100%; }
+}
+
+/* sweeping bright "glow" overlay (uses background-clip to color text) */
+@keyframes shine-sweep {
+  0%   { background-position: -120% 0; opacity: 0; filter: blur(6px) contrast(1); }
+  30%  { opacity: 1; }
+  100% { background-position: 220% 0; opacity: 1; filter: blur(0.6px) contrast(1.05); }
+}
+
+/* base text — ensure original text remains visible */
+.name-text {
+  position: relative;
+  z-index: 1;
+  /* fallback color */
+  color: inherit;
+}
+
+/* glow layer (same text colored, clipped to text by background-clip) */
+.name-shine {
+  z-index: 2;
+  /* duplicate the text color via background-clip technique */
+  background-image: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(125,211,252,0.95) 40%,
+    rgba(99,102,241,0.98) 50%,
+    rgba(125,211,252,0.95) 60%,
+    rgba(255,255,255,0) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: inline-block;
+  width: 100%;
+  transform: translateZ(0);
+  pointer-events: none;
+  /* shimmer animation */
+  animation: shine-sweep 1.8s ease-out forwards;
+  filter: drop-shadow(0 6px 12px rgba(99,102,241,0.25));
+}
+
+/* the small moving bar that gives the "insert" feeling */
+.insert-bar {
+  z-index: 3;
+  left: 0;
+  width: 3px;
+  /* subtle gradient + bright core */
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.95) 20%,
+    rgba(99,102,241,1) 50%,
+    rgba(255,255,255,0.95) 80%,
+    rgba(255,255,255,0) 100%
+  );
+  box-shadow: 0 0 16px rgba(99,102,241,0.9), 0 0 6px rgba(125,211,252,0.6);
+  animation: bar-move 1.8s linear forwards;
+  transform-origin: center;
+}
+
+</style>
 </head>
 <body class="font-sans scroll-smooth transition-colors duration-500 text-gray-900" style="background-color: #d0d0d0;">
   <div id="cursor-light"></div>
@@ -274,7 +354,14 @@
   <!-- Hero -->
   <section id="hero" class="h-screen flex flex-col justify-center items-center text-white text-center" style="background-color: #000000cc;">
     <!-- <img src="images/profilepic.jpg" alt="Adithya Suresh" class="w-40 h-52 rounded-full border-4 border-white shadow-lg fade-in"/> -->
-    <h1 class="text-5xl font-bold mt-4 fade-in">Hi, I'm Adithya Suresh</h1>
+    <h1 class="text-5xl font-bold mt-4">
+      Hi, I'm
+    <span class="relative inline-block ml-3">
+    <span class="name-text relative inline-block">Adithya Suresh</span>
+    <span class="name-shine absolute inset-0 pointer-events-none"></span>
+    <span class="insert-bar absolute top-0 bottom-0 w-[3px] translate-x-[-50%] pointer-events-none"></span>
+    </span>
+    </h1>
     <h2 class="text-2xl mt-2 mb-6 fade-in font-bold rainbow-text">Software Engineer</h2>
       <p class="text-lg text-white-600 mb-8 fade-in">
         Engineer by experience, innovator by mindset — crafting robust software with cloud, data, and code at its core.
@@ -282,13 +369,17 @@
       <p class="text-lg text-white-600 mb-8 fade-in">
         Actively seeking software and AI internship opportunities for Fall 2025 and Spring 2026
       </p>
-    <a href="AdithyaSuresh_Resume.pdf" download class="mt-6 bg-blue-500 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition fade-in">
-      </i>Download Resume</a>
+    <!-- Download Buttons -->
+    <div class="flex flex-wrap gap-4 justify-center items-center mt-6">
+      <a href="AdithyaSuresh_Resume.pdf" download class="bg-blue-500 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition fade-in">
+        <i class="fas fa-download mr-2"></i>Download Resume</a>
+      <a href="AdithyaSuresh_CoverLetter.pdf" download class="bg-green-500 text-white px-6 py-2 rounded-lg shadow hover:bg-green-700 transition fade-in">
+        <i class="fas fa-file-alt mr-2"></i>Download Cover Letter</a>
+    </div>
     <a href="#about" class="mt-3 bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-700 transition fade-in">
       Learn More
     </a>
 
-  <!-- Scroll Down Indicator -->
   <!-- Scroll Down Indicator -->
   <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 fade-in">
     <a href="#about" class="block animate-bounce">
@@ -380,7 +471,6 @@
       </div>
     </section>
 
-  <!-- Skills Section -->
   <!-- Skills -->
   <section id="skills" class="py-20 px-6 max-w-4xl mx-auto fade-in">
     <h2 class="text-3xl font-bold mb-6 flex items-center gap-2">
@@ -494,6 +584,33 @@
       <div class="swiper projects-swiper">
         <div class="swiper-wrapper">
           
+          <!-- Project Card 0 -->
+          <div class="swiper-slide">
+            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
+              <div class="flex justify-between items-start mb-4">
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold mb-2">Healthcare AI Chat bot</h3>
+                  <p class="text-sm text-gray-500 mb-3">Built a clinically grounded healthcare AI assistant using a multi-layer RAG pipeline (dual-vector retrieval + GraphRAG), improving answer correctness to 4.1/5 across 400+ evaluated medical QA pairs.</p>
+                </div>
+                <a href="https://github.com/Adithya280399/HealthCareAI" target="_blank" 
+                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
+                  <i class="fab fa-github text-2xl"></i>
+                </a>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
+                Built a clinically grounded AI health assistant using a multi-layer RAG pipeline (dual-vector retrieval, GraphRAG, rule-based indexing), improving retrieval accuracy and reducing hallucinations across 400+ evaluated QA pairs. Designed evaluation frameworks (BLEU, ROUGE, BERTScore, EM) and safety guardrails that increased correctness to 4.1/5 and conciseness to 4.5/5 while ensuring traceable evidence-backed responses.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Python</span>
+                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">OpenAI</span>
+                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Vector DB(Faiss)</span>
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Evaluation Metrics: BLEU, ROUGE, BERTScore, Exact Match</span>
+                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">LlamaIndex</span>
+                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">RAG/GraphRAG</span>
+              </div>
+            </div>
+          </div>
+
           <!-- Project Card 1 -->
           <div class="swiper-slide">
             <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
