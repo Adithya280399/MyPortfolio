@@ -119,7 +119,6 @@
       40% { content: '..'; }
       60%, 100% { content: '...'; }
     }
-
      /* Fixed Swiper Styles */
     .projects-swiper {
       width: 100%;
@@ -182,6 +181,78 @@
         display: none !important;
       }
     }
+
+    @keyframes ping {
+          0% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
+          75%, 100% {
+            transform: scale(2);
+            opacity: 0;
+          }
+        }
+        
+  .animate-ping {
+          animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+          /* Available for Work Indicator Styles */
+        .available-indicator {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 18px;
+          border-radius: 9999px;
+          border: 1px solid rgba(75, 85, 99, 0.6);
+          background: rgba(17, 24, 39, 0.7);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+        }
+
+        .status-dot-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 12px;
+          height: 12px;
+        }
+
+        .status-dot-ping {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background-color: rgba(16, 185, 129, 0.5);
+          animation: statusPing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        .status-dot {
+          position: relative;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #10b981;
+          box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
+        }
+
+        .status-text {
+          font-size: 14px;
+          font-weight: 500;
+          color: #e5e5e5;
+          letter-spacing: 0.02em;
+        }
+
+        @keyframes statusPing {
+          0% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
+          75%, 100% {
+            transform: scale(2.2);
+            opacity: 0;
+          }
+        }
 
  /* Scroll Down Indicator Styles */
 .mouse-scroll {
@@ -369,6 +440,15 @@
       <p class="text-lg text-white-600 mb-8 fade-in">
         Actively seeking software and AI internship opportunities for Fall 2025 and Spring 2026
       </p>
+
+    <!-- Available for Work Indicator -->
+    <div class="available-indicator fade-in mb-4">
+      <div class="status-dot-container">
+        <span class="status-dot-ping"></span>
+        <span class="status-dot"></span>
+      </div>
+      <span class="status-text">Available for work</span>
+    </div>
     <!-- Download Buttons -->
     <div class="flex flex-wrap gap-4 justify-center items-center mt-6">
       <a href="AdithyaSuresh_Resume.pdf" download class="bg-blue-500 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition fade-in">
