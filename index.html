@@ -253,7 +253,169 @@
             opacity: 0;
           }
         }
+        /* Floating Pill Navigation Styles */
+        .floating-nav {
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 100;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          padding: 6px 8px;
+          border-radius: 9999px;
+          background: rgba(17, 17, 17, 0.85);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
 
+        .floating-nav-links {
+          display: flex;
+          align-items: center;
+          gap: 2px;
+          position: relative;
+        }
+
+        .nav-link {
+          position: relative;
+          padding: 10px 16px;
+          font-size: 14px;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.7);
+          text-decoration: none;
+          border-radius: 9999px;
+          transition: color 0.2s ease;
+          z-index: 2;
+        }
+
+        .nav-link:hover {
+          color: rgba(255, 255, 255, 1);
+        }
+
+        .nav-link.active {
+          color: rgba(255, 255, 255, 1);
+        }
+
+        /* Sliding background indicator */
+        .nav-indicator {
+          position: absolute;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 9999px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .nav-divider {
+          width: 1px;
+          height: 24px;
+          background: rgba(255, 255, 255, 0.15);
+          margin: 0 8px;
+        }
+
+        .nav-cta {
+          padding: 10px 18px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #111;
+          background: #fff;
+          border-radius: 9999px;
+          text-decoration: none;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+          background: rgba(255, 255, 255, 0.9);
+          transform: scale(1.02);
+        }
+
+        /* Mobile hamburger for floating nav */
+        .floating-nav-mobile {
+          display: none;
+        }
+
+        .mobile-menu-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          color: rgba(255, 255, 255, 0.8);
+        }
+
+        .mobile-menu-btn:hover {
+          color: #fff;
+        }
+
+        /* Mobile dropdown menu */
+        .mobile-dropdown {
+          position: absolute;
+          top: calc(100% + 12px);
+          left: 50%;
+          transform: translateX(-50%);
+          min-width: 200px;
+          padding: 8px;
+          background: rgba(17, 17, 17, 0.95);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 16px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.2s ease;
+        }
+
+        .mobile-dropdown.show {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .mobile-dropdown a {
+          display: block;
+          padding: 12px 16px;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          border-radius: 10px;
+          transition: all 0.15s ease;
+        }
+
+        .mobile-dropdown a:hover {
+          background: rgba(255, 255, 255, 0.1);
+          color: #fff;
+        }
+
+        @media (max-width: 768px) {
+          .floating-nav-links,
+          .nav-divider,
+          .nav-cta-desktop {
+            display: none;
+          }
+
+          .floating-nav-mobile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+
+          .floating-nav {
+            padding: 4px 4px 4px 16px;
+          }
+
+          .nav-cta-mobile {
+            padding: 10px 16px;
+            font-size: 13px;
+          }
+        }
  /* Scroll Down Indicator Styles */
 .mouse-scroll {
   width: 30px;
@@ -421,6 +583,50 @@
     <a href="#contact" class="block hover:bg-gray-600 px-4 py-2 rounded">Contact</a>
   </div>
   </div>
+
+  <!-- Floating Pill Navigation -->
+  <nav class="floating-nav" id="floating-nav">
+    <!-- Desktop Navigation Links -->
+    <div class="floating-nav-links" id="nav-links">
+      <div class="nav-indicator" id="nav-indicator"></div>
+      <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+      <a href="#about" class="nav-link" data-section="about">About</a>
+      <a href="#experience" class="nav-link" data-section="experience">Work</a>
+      <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+      <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+    </div>
+
+    <!-- Divider -->
+    <div class="nav-divider"></div>
+
+    <!-- CTA Button (Desktop) -->
+    <a href="#contact" class="nav-cta nav-cta-desktop">Get in Touch</a>
+
+    <!-- Mobile Menu -->
+    <div class="floating-nav-mobile">
+      <a href="#contact" class="nav-cta nav-cta-mobile">Contact</a>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div class="mobile-dropdown" id="mobile-dropdown">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
   <!-- Hero -->
   <section id="hero" class="h-screen flex flex-col justify-center items-center text-white text-center" style="background-color: #000000cc;">

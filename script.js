@@ -65,6 +65,110 @@ document.addEventListener("DOMContentLoaded", () => {
       menu.classList.add('hidden');
     });
   });
+
+
+  // ========== Floating Pill Navigation ==========
+  const navLinks = document.querySelectorAll('.nav-link');
+  const navIndicator = document.getElementById('nav-indicator');
+  const navLinksContainer = document.getElementById('nav-links');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDropdown = document.getElementById('mobile-dropdown');
+
+  // Function to move indicator to a specific link
+  function moveIndicator(link) {
+    if (!link || !navIndicator || !navLinksContainer) return;
+    
+    const linkRect = link.getBoundingClientRect();
+    const containerRect = navLinksContainer.getBoundingClientRect();
+    
+    navIndicator.style.width = `${linkRect.width}px`;
+    navIndicator.style.left = `${linkRect.left - containerRect.left}px`;
+  }
+
+  // Initialize indicator on active link
+  function initIndicator() {
+    const activeLink = document.querySelector('.nav-link.active');
+    if (activeLink) {
+      moveIndicator(activeLink);
+    }
+  }
+
+  // Run on load and resize
+  window.addEventListener('load', initIndicator);
+  window.addEventListener('resize', initIndicator);
+
+  // Hover effect - move indicator on hover
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      moveIndicator(link);
+    });
+  });
+
+  // Reset to active link when mouse leaves nav
+  if (navLinksContainer) {
+    navLinksContainer.addEventListener('mouseleave', () => {
+      const activeLink = document.querySelector('.nav-link.active');
+      if (activeLink) {
+        moveIndicator(activeLink);
+      }
+    });
+  }
+
+  // Update active link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  
+  function updateActiveOnScroll() {
+    const scrollY = window.scrollY + 100;
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('data-section') === sectionId) {
+            link.classList.add('active');
+            moveIndicator(link);
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveOnScroll);
+
+  // Click to set active
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      moveIndicator(link);
+    });
+  });
+
+  // Mobile menu toggle
+  if (mobileMenuBtn && mobileDropdown) {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileDropdown.classList.toggle('show');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileDropdown.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mobileDropdown.classList.remove('show');
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    mobileDropdown.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDropdown.classList.remove('show');
+      });
+    });
+  }
   // Back to top button
   const topBtn = document.getElementById('top-btn');
   window.addEventListener('scroll', () => {
