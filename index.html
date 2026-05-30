@@ -464,7 +464,13 @@
     opacity: 1;
   }
 }
-
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 6s linear infinite;
+  }
 /* thin insert bar that moves left -> right */
 @keyframes bar-move {
   0%   { left: 0%; }
@@ -562,10 +568,25 @@
     <!-- Fixed inner content -->
   <div class="fixed top-0 left-0 w-full z-50 py-4 px-6 flex justify-between items-center">
   <h1 class="text-lg font-bold fade-in">
-    <a href="#hero" class="block transition-transform transform hover:scale-125 rounded">
-      <span class="text-orange-500">AS</span>
-      <span class="block text-sm text-blue-500">Portfolio</span>
-   </a>
+  <a href="#hero" class="block group">
+    <div class="relative w-10 h-10 flex items-center justify-center">
+    <!-- Spinning ring -->
+    <svg class="absolute inset-0 w-full h-full animate-spin-slow" viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="18" fill="none" stroke="url(#grad)" stroke-width="2"
+        stroke-dasharray="60 54" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#3b82f6"/>
+            <stop offset="100%" style="stop-color:#f97316"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    <!-- Initials -->
+     <span class="text-sm font-bold z-10">
+       <span class="text-orange-500">A</span><span class="text-blue-500">S</span>
+      </span>
+    </div>
+  </a>
   </h1>
 
     <!-- <div class="transition-transform transform hover:scale-125">
@@ -718,7 +739,7 @@
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
         </span>
-        <span class="text-sm font-medium text-red-600 dark:text-red-400">
+        <span class="text-sm font-medium text-black-600 dark:text-black-400">
           Actively seeking full-time opportunities — AI Engineering · Full-Stack · Backend
         </span>
       </div>
@@ -1198,36 +1219,37 @@
   const mobileDropdown = document.getElementById('mobile-dropdown');
   let lastScrollY = window.scrollY;
 
-  // Scroll hide/show behavior
+  // Scroll hide/show
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
-
     if (currentScrollY < 50) {
-      // Always visible at top of page
       floatingNav.style.transform = 'translateX(-50%) translateY(0)';
       floatingNav.style.opacity = '1';
     } else if (currentScrollY < lastScrollY) {
-      // Scrolling UP — show
       floatingNav.style.transform = 'translateX(-50%) translateY(0)';
       floatingNav.style.opacity = '1';
     } else {
-      // Scrolling DOWN — hide
       floatingNav.style.transform = 'translateX(-50%) translateY(-120%)';
       floatingNav.style.opacity = '0';
     }
-
     lastScrollY = currentScrollY;
-
-    // Close mobile dropdown when scrolling
     mobileDropdown.classList.remove('show');
   });
 
-  // Mobile menu toggle — your existing behavior preserved
-  mobileMenuBtn.addEventListener('click', () => {
+  // Mobile toggle — THIS is what's missing
+  mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     mobileDropdown.classList.toggle('show');
   });
 
-  // Close dropdown when a mobile link is clicked
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!floatingNav.contains(e.target)) {
+      mobileDropdown.classList.remove('show');
+    }
+  });
+
+  // Close on link click
   mobileDropdown.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileDropdown.classList.remove('show');
