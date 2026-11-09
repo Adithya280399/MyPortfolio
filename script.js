@@ -335,7 +335,7 @@
     { group: 'Actions', label: 'Download cover letter', icon: 'i-file', hint: 'PDF', run: download('AdithyaSuresh_CoverLetter.pdf') },
     { group: 'Actions', label: 'Copy email address', icon: 'i-copy', hint: 'adithyasuresh470@gmail.com', run: () => copyText('adithyasuresh470@gmail.com') },
     { group: 'Actions', label: 'Send an email', icon: 'i-mail', run: () => { location.href = 'mailto:adithyasuresh470@gmail.com'; } },
-    { group: 'Links', label: 'LinkedIn', icon: 'i-linkedin', hint: 'Opens in new tab', run: openUrl('https://www.linkedin.com/in/adithya-suresh-044435166/') },
+    { group: 'Links', label: 'LinkedIn', icon: 'i-linkedin', hint: 'Opens in new tab', run: openUrl('https://www.linkedin.com/in/suresh-a-726543440/') },
     { group: 'Links', label: 'GitHub', icon: 'i-github', hint: 'Opens in new tab', run: openUrl('https://github.com/adithya280399') },
     ...[['hero', 'Home'], ['about', 'About'], ['experience', 'Experience'], ['skills', 'Skills'], ['projects', 'Projects'],
         ['education', 'Education'], ['certifications', 'Certifications'], ['awards', 'Awards'], ['contact', 'Contact']]

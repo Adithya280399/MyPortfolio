@@ -49,5 +49,5 @@ npx serve .
 ## Contact
 
 - Email: [adithyasuresh470@gmail.com](mailto:adithyasuresh470@gmail.com)
-- LinkedIn: [adithya-suresh](https://www.linkedin.com/in/adithya-suresh-044435166/)
+- LinkedIn: [suresh-a-726543440](https://www.linkedin.com/in/suresh-a-726543440/)
 - GitHub: [@adithya280399](https://github.com/adithya280399)
