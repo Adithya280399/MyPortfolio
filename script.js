@@ -10,7 +10,10 @@
   const finePointer = window.matchMedia('(pointer: fine)').matches;
 
   /* ---------- Intro (replaces the blocking loader) ---------- */
-  requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('is-loaded')));
+  const markLoaded = () => document.body.classList.add('is-loaded');
+  requestAnimationFrame(() => requestAnimationFrame(markLoaded));
+  // rAF can be paused in background tabs / embedded browser panes
+  setTimeout(markLoaded, 600);
 
   /* ---------- Year ---------- */
   const yearEl = $('#year');
@@ -127,7 +130,9 @@
   /* ---------- Scroll reveal ---------- */
   const revealEls = $$('.reveal');
   if ('IntersectionObserver' in window && !reduceMotion) {
+    let ioFired = false;
     const io = new IntersectionObserver(entries => {
+      ioFired = true;
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const el = entry.target;
@@ -145,6 +150,12 @@
       if (i > 0) el.style.transitionDelay = `${Math.min(i, 6) * 60}ms`;
       io.observe(el);
     });
+    // fail-safe: if the observer never fires (some embedded browsers), show everything
+    setTimeout(() => {
+      if (!ioFired) {
+        revealEls.forEach(el => { el.style.transitionDelay = ''; el.classList.add('is-in', 'settled'); });
+      }
+    }, 2500);
   } else {
     revealEls.forEach(el => el.classList.add('is-in', 'settled'));
   }
