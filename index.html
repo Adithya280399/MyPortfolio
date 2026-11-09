@@ -1,1281 +1,724 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Adithya Suresh Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adithya Suresh — Software Engineer</title>
+  <meta name="description" content="Adithya Suresh — Software Engineer with 4+ years of enterprise experience in distributed systems and cloud-native backends, specializing in applied AI engineering: RAG pipelines, LLM orchestration, and multi-agent systems." />
+  <meta name="theme-color" content="#090909" />
+  <meta name="color-scheme" content="dark" />
 
-  <style>
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Adithya Suresh — Software Engineer" />
+  <meta property="og:description" content="Engineer by experience, innovator by mindset — crafting robust software with cloud, data, and code at its core." />
+  <meta property="og:image" content="images/profilepic.png" />
+  <meta name="twitter:card" content="summary" />
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .underline-animation {
-      position: relative;
-      display: inline-block;
-    }
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23fff'/%3E%3Ctext x='32' y='41' font-family='Arial,sans-serif' font-size='26' font-weight='700' text-anchor='middle' fill='%23000' letter-spacing='-1'%3EAS%3C/text%3E%3C/svg%3E" />
 
-    .underline-animation::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #3b82f6; /* blue-500 */
-      transform-origin: bottom right;
-      transition: transform 0.25s ease-out;
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 
-    .underline-animation:hover::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
+  <script>document.documentElement.classList.remove('no-js');</script>
 
-    .rainbow-text {
-    background: linear-gradient(to right,rgb(239, 158, 27), rgb(239, 158, 27), rgb(212, 140, 14), rgb(72, 188, 226), rgb(72, 188, 226), rgb(153, 68, 45), rgb(153, 68, 45));
-    background-size: 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: rainbowMove 6s linear infinite;
-    }
-
-    @keyframes rainbowMove {
-    0% { background-position: 0% }
-    100% { background-position: 100% }
-    }
-
-
-    @keyframes shimmer {
-    0% { left: -100%; }
-    100% { left: 100%; }
-    }
-
-    #cursor-light {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 150px;
-      height: 150px;
-      pointer-events: none;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(102,241,226,0.25) 0%, transparent 80%);
-      mix-blend-mode: screen;
-      z-index: 50;
-      transform: translate(-50%, -50%);
-      transition: background 0.3s ease;
-    }
-    .particle-wave-loader {
-      position: relative;
-      width: 120px;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .particle {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #c76e16;
-      animation: wave 1.5s ease-in-out infinite;
-      transform: translateY(0);
-    }
-
-    .particle:nth-child(1) { left: 0; animation-delay: 0s; }
-    .particle:nth-child(2) { left: 15px; animation-delay: 0.1s; }
-    .particle:nth-child(3) { left: 30px; animation-delay: 0.2s; }
-    .particle:nth-child(4) { left: 45px; animation-delay: 0.3s; }
-    .particle:nth-child(5) { left: 60px; animation-delay: 0.4s; }
-    .particle:nth-child(6) { left: 75px; animation-delay: 0.5s; }
-    .particle:nth-child(7) { left: 90px; animation-delay: 0.6s; }
-    .particle:nth-child(8) { left: 105px; animation-delay: 0.7s; }
-
-    @keyframes wave {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-30px); }
-    }
-
-    .loading-dots::after {
-      content: '...';
-      animation: dots 1.5s steps(5, end) infinite;
-    }
-
-    @keyframes dots {
-      0%, 20% { content: '.'; }
-      40% { content: '..'; }
-      60%, 100% { content: '...'; }
-    }
-     /* Fixed Swiper Styles */
-    .projects-swiper {
-      width: 100%;
-      padding: 20px 0 60px 0;
-    }
-
-    .projects-swiper .swiper-slide {
-      height: auto;
-      display: flex;
-    }
-
-    .project-card {
-      width: 100%;
-      height: 100%;
-      min-height: 300px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Custom navigation buttons */
-    .swiper-button-prev,
-    .swiper-button-next {
-      width: 44px;
-      height: 44px;
-      margin-top: -22px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      color: #6b7280;
-    }
-
-    .swiper-button-prev:hover,
-    .swiper-button-next:hover {
-      background: #f3f4f6;
-      color: #374151;
-    }
-
-    .swiper-button-prev::after,
-    .swiper-button-next::after {
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    /* Pagination styles */
-    .swiper-pagination-bullet {
-      width: 12px;
-      height: 12px;
-      background: #d1d5db;
-      opacity: 1;
-    }
-
-    .swiper-pagination-bullet-active {
-      background: #3b82f6;
-    }
-
-    /* Hide arrows on mobile */
-    @media (max-width: 767px) {
-      .swiper-button-prev,
-      .swiper-button-next {
-        display: none !important;
-      }
-    }
-
-    @keyframes ping {
-          0% {
-            transform: scale(1);
-            opacity: 0.8;
-          }
-          75%, 100% {
-            transform: scale(2);
-            opacity: 0;
-          }
-        }
-        
-  .animate-ping {
-          animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-          /* Available for Work Indicator Styles */
-        .available-indicator {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 10px 18px;
-          border-radius: 9999px;
-          border: 1px solid rgba(75, 85, 99, 0.6);
-          background: rgba(17, 24, 39, 0.7);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-        }
-
-        .status-dot-container {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 12px;
-          height: 12px;
-        }
-
-        .status-dot-ping {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          background-color: rgba(16, 185, 129, 0.5);
-          animation: statusPing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-
-        .status-dot {
-          position: relative;
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background-color: #10b981;
-          box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
-        }
-
-        .status-text {
-          font-size: 14px;
-          font-weight: 500;
-          color: #e5e5e5;
-          letter-spacing: 0.02em;
-        }
-
-        @keyframes statusPing {
-          0% {
-            transform: scale(1);
-            opacity: 0.8;
-          }
-          75%, 100% {
-            transform: scale(2.2);
-            opacity: 0;
-          }
-        }
-        /* Floating Pill Navigation Styles */
-        .floating-nav {
-          position: fixed;
-          top: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 100;
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          padding: 6px 8px;
-          border-radius: 9999px;
-          background: rgba(17, 17, 17, 0.85);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-          transition: transform 0.3s ease, opacity 0.3s ease;
-          will-change: transform;
-        }
-
-        .floating-nav-links {
-          display: flex;
-          align-items: center;
-          gap: 2px;
-          position: relative;
-        }
-
-        .nav-link {
-          position: relative;
-          padding: 10px 16px;
-          font-size: 14px;
-          font-weight: 500;
-          color: rgba(255, 255, 255, 0.7);
-          text-decoration: none;
-          border-radius: 9999px;
-          transition: color 0.2s ease;
-          z-index: 2;
-        }
-
-        .nav-link:hover {
-          color: rgba(255, 255, 255, 1);
-        }
-
-        .nav-link.active {
-          color: rgba(255, 255, 255, 1);
-        }
-
-        /* Sliding background indicator */
-        .nav-indicator {
-          position: absolute;
-          height: 100%;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 9999px;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          z-index: 1;
-          pointer-events: none;
-        }
-
-        .nav-divider {
-          width: 1px;
-          height: 24px;
-          background: rgba(255, 255, 255, 0.15);
-          margin: 0 8px;
-        }
-
-        .nav-cta {
-          padding: 10px 18px;
-          font-size: 14px;
-          font-weight: 500;
-          color: #111;
-          background: #fff;
-          border-radius: 9999px;
-          text-decoration: none;
-          transition: all 0.2s ease;
-          white-space: nowrap;
-        }
-
-        .nav-cta:hover {
-          background: rgba(255, 255, 255, 0.9);
-          transform: scale(1.02);
-        }
-
-        /* Mobile hamburger for floating nav */
-        .floating-nav-mobile {
-          display: none;
-        }
-
-        .mobile-menu-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          height: 40px;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-          color: rgba(255, 255, 255, 0.8);
-        }
-
-        .mobile-menu-btn:hover {
-          color: #fff;
-        }
-
-        /* Mobile dropdown menu */
-        .mobile-dropdown {
-          position: absolute;
-          top: calc(100% + 12px);
-          left: 50%;
-          transform: translateX(-50%);
-          min-width: 200px;
-          padding: 8px;
-          background: rgba(17, 17, 17, 0.95);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 16px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-          opacity: 0;
-          visibility: hidden;
-          transition: all 0.2s ease;
-        }
-
-        .mobile-dropdown.show {
-          opacity: 1;
-          visibility: visible;
-        }
-
-        .mobile-dropdown a {
-          display: block;
-          padding: 12px 16px;
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          border-radius: 10px;
-          transition: all 0.15s ease;
-        }
-
-        .mobile-dropdown a:hover {
-          background: rgba(255, 255, 255, 0.1);
-          color: #fff;
-        }
-
-        @media (max-width: 768px) {
-          .floating-nav-links,
-          .nav-divider,
-          .nav-cta-desktop {
-            display: none;
-          }
-
-          .floating-nav-mobile {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-          }
-
-          .floating-nav {
-            padding: 4px 4px 4px 16px;
-          }
-
-          .nav-cta-mobile {
-            padding: 10px 16px;
-            font-size: 13px;
-          }
-        }
- /* Scroll Down Indicator Styles */
-.mouse-scroll {
-  width: 30px;
-  height: 30px;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  transform: rotate(45deg);
-  animation: pulse 2s infinite;
-}
-  
-  .mouse-scroll::before {
-    content: '';
-    width: 4px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 2px;
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: scrollDown 2s infinite;
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adithya Suresh",
+    "jobTitle": "Software Engineer",
+    "email": "mailto:adithyasuresh470@gmail.com",
+    "alumniOf": ["University of North Texas", "Jeppiaar Engineering College"],
+    "sameAs": [
+      "https://www.linkedin.com/in/adithya-suresh-044435166/",
+      "https://github.com/adithya280399"
+    ]
   }
-  
-  @keyframes scrollDown {
-    0% { opacity: 1; transform: translate(-50%, 0); }
-    100% { opacity: 0; transform: translate(-50%, 12px); }
-  }
-  
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
-  }
-  
-  .animate-bounce {
-    animation: bounce 2s infinite;
-  }
- 
-/* Accessible: respects reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .name-shine,
-  .insert-bar {
-    animation: none !important;
-    opacity: 1;
-  }
-}
-@keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  .animate-spin-slow {
-    animation: spin-slow 6s linear infinite;
-  }
-/* thin insert bar that moves left -> right */
-@keyframes bar-move {
-  0%   { left: 0%; }
-  100% { left: 100%; }
-}
-
-/* sweeping bright "glow" overlay (uses background-clip to color text) */
-@keyframes shine-sweep {
-  0%   { background-position: -120% 0; opacity: 0; filter: blur(6px) contrast(1); }
-  30%  { opacity: 1; }
-  100% { background-position: 220% 0; opacity: 1; filter: blur(0.6px) contrast(1.05); }
-}
-
-/* base text — ensure original text remains visible */
-.name-text {
-  position: relative;
-  z-index: 1;
-  /* fallback color */
-  color: inherit;
-}
-
-/* glow layer (same text colored, clipped to text by background-clip) */
-.name-shine {
-  z-index: 2;
-  /* duplicate the text color via background-clip technique */
-  background-image: linear-gradient(
-    90deg,
-    rgba(255,255,255,0) 0%,
-    rgba(125,211,252,0.95) 40%,
-    rgba(99,102,241,0.98) 50%,
-    rgba(125,211,252,0.95) 60%,
-    rgba(255,255,255,0) 100%
-  );
-  background-repeat: no-repeat;
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  display: inline-block;
-  width: 100%;
-  transform: translateZ(0);
-  pointer-events: none;
-  /* shimmer animation */
-  animation: shine-sweep 1.8s ease-out forwards;
-  filter: drop-shadow(0 6px 12px rgba(99,102,241,0.25));
-}
-
-/* the small moving bar that gives the "insert" feeling */
-.insert-bar {
-  z-index: 3;
-  left: 0;
-  width: 3px;
-  /* subtle gradient + bright core */
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.95) 20%,
-    rgba(99,102,241,1) 50%,
-    rgba(255,255,255,0.95) 80%,
-    rgba(255,255,255,0) 100%
-  );
-  box-shadow: 0 0 16px rgba(99,102,241,0.9), 0 0 6px rgba(125,211,252,0.6);
-  animation: bar-move 1.8s linear forwards;
-  transform-origin: center;
-}
-
-</style>
+  </script>
 </head>
-<body class="font-sans scroll-smooth transition-colors duration-500 text-gray-900" style="background-color: #d0d0d0;">
-  <div id="cursor-light"></div>
-  <!-- Loader -->
-  <div id="loader" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-white transition-opacity duration-500">
-    <div class="particle-wave-loader">
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-    </div>
-    <h1 class="mt-8 text-xl sm:text-2xl font-mono text-center">
-      <span class="loading-text">Initializing Adithya's Portfolio</span>
-      <span class="loading-dots">...</span>
-    </h1>
-  </div> 
+<body>
 
-  <!-- Navigation -->
-  <nav class="w-full">
-    <!-- Fixed inner content -->
-  <div class="fixed top-0 left-0 w-full z-50 py-4 px-6 flex justify-between items-center">
-  <h1 class="text-lg font-bold fade-in">
-  <a href="#hero" class="block group">
-    <div class="relative w-10 h-10 flex items-center justify-center">
-    <!-- Spinning ring -->
-    <svg class="absolute inset-0 w-full h-full animate-spin-slow" viewBox="0 0 40 40">
-      <circle cx="20" cy="20" r="18" fill="none" stroke="url(#grad)" stroke-width="2"
-        stroke-dasharray="60 54" stroke-linecap="round"/>
-        <defs>
-          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#3b82f6"/>
-            <stop offset="100%" style="stop-color:#f97316"/>
-          </linearGradient>
-        </defs>
-      </svg>
-    <!-- Initials -->
-     <span class="text-sm font-bold z-10">
-       <span class="text-orange-500">A</span><span class="text-blue-500">S</span>
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+    <symbol id="i-hash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1-.01 5 2.5 2.5 0 0 1 .01-5zM3 9h4v12H3zM9 9h3.6v1.71h.05c.5-.9 1.75-1.85 3.6-1.85 3.85 0 4.56 2.53 4.56 5.82V21h-4v-5.4c0-1.29-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H9z"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#hero" class="brand" aria-label="Adithya Suresh — back to top">
+      <span class="brand-mark">AS</span>
+      <span class="brand-name">Adithya Suresh</span>
+    </a>
+
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <span class="nav-indicator" id="nav-indicator" aria-hidden="true"></span>
+      <a class="nav-link" href="#about" data-section="about">About</a>
+      <a class="nav-link" href="#experience" data-section="experience">Experience</a>
+      <a class="nav-link" href="#skills" data-section="skills">Skills</a>
+      <a class="nav-link" href="#projects" data-section="projects">Projects</a>
+      <a class="nav-link" href="#education" data-section="education">Education</a>
+      <a class="nav-link" href="#credentials" data-section="credentials">Credentials</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="cmdk-trigger" id="cmdk-open" type="button" aria-label="Open quick actions">
+        <svg aria-hidden="true"><use href="#i-search"/></svg>
+        <span class="cmdk-label">Quick actions</span>
+        <span class="kbd" id="cmdk-key">Ctrl K</span>
+      </button>
+      <a href="#contact" class="btn btn-primary btn-sm">Get in touch</a>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#education">Education</a>
+  <a href="#credentials">Credentials</a>
+  <a href="#contact">Contact</a>
+  <div class="mobile-menu-foot">
+    <a href="AdithyaSuresh_Resume.pdf" download class="btn btn-primary"><svg aria-hidden="true"><use href="#i-download"/></svg>Resume</a>
+    <a href="AdithyaSuresh_CoverLetter.pdf" download class="btn btn-secondary"><svg aria-hidden="true"><use href="#i-file"/></svg>Cover letter</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <span class="status-pill intro">
+        <span class="status-dot" aria-hidden="true"></span>
+        Available for work · Open to full-time roles
       </span>
-    </div>
-  </a>
-  </h1>
 
-    <!-- <div class="transition-transform transform hover:scale-125">
-      <button id="menu-btn" class="text-lg text-blue-600 font-bold relative z-50 fade-in">☰</button>
-    </div> -->
-  </div>
-  </nav>
+      <h1 class="display-xxl hero-title" id="hero-title">
+        <span class="line"><span class="muted-word">Hi, I'm</span></span>
+        <span class="line"><span>Adithya Suresh</span></span>
+      </h1>
 
-  <div id="menu" class="hidden fixed top-16 right-6 bg-gray-900 text-white p-4 rounded-lg shadow-lg space-y-2 z-40">
-    <a href="#about" class="block hover:bg-gray-600 px-4 py-2 rounded">About</a>
-    <a href="#experience" class="block hover:bg-gray-600 px-4 py-2 rounded">Experience</a>
-    <a href="#skills" class="block hover:bg-gray-600 px-4 py-2 rounded">Skills</a>
-    <a href="#education" class="block hover:bg-gray-600 px-4 py-2 rounded">Education</a>
-    <a href="#projects" class="block hover:bg-gray-600 px-4 py-2 rounded">Projects</a>
-    <a href="#certifications" class="block hover:bg-gray-600 px-4 py-2 rounded">Certifications</a>
-    <a href="#awards" class="block hover:bg-gray-600 px-4 py-2 rounded">Awards</a>
-    <a href="#contact" class="block hover:bg-gray-600 px-4 py-2 rounded">Contact</a>
-  </div>
-  </div>
+      <div class="hero-bottom">
+        <div class="hero-copy">
+          <p class="subhead hero-role intro d1">Software Engineer</p>
+          <p class="body-lg muted intro d2">Engineer by experience, innovator by mindset — crafting robust software with cloud, data, and code at its core.</p>
+          <p class="body-sm muted intro d2">Seeking full-time roles in AI Engineering · Full-Stack · Backend · DevOps</p>
+          <div class="hero-cta intro d3">
+            <a href="AdithyaSuresh_Resume.pdf" download class="btn btn-primary magnetic">
+              <svg aria-hidden="true"><use href="#i-download"/></svg>Download Resume
+            </a>
+            <a href="AdithyaSuresh_CoverLetter.pdf" download class="btn btn-secondary magnetic">
+              <svg aria-hidden="true"><use href="#i-file"/></svg>Cover Letter
+            </a>
+            <a href="#about" class="btn btn-secondary">Learn more</a>
+          </div>
+        </div>
 
-  <!-- Floating Pill Navigation -->
-<nav class="floating-nav" id="floating-nav">
-  <!-- Desktop Navigation Links -->
-  <div class="floating-nav-links" id="nav-links">
-    <div class="nav-indicator" id="nav-indicator"></div>
-    <a href="#hero" class="nav-link active" data-section="hero">Home</a>
-    <a href="#about" class="nav-link" data-section="about">About</a>
-    <a href="#experience" class="nav-link" data-section="experience">Work</a>
-    <a href="#skills" class="nav-link" data-section="skills">Skills</a>
-    <a href="#projects" class="nav-link" data-section="projects">Projects</a>
-    <a href="#certifications" class="nav-link" data-section="certifications">Other</a>
-  </div>
-
-  <!-- Divider -->
-  <div class="nav-divider"></div>
-
-  <!-- CTA Button (Desktop) -->
-  <a href="#contact" class="nav-cta nav-cta-desktop">Get in Touch</a>
-
-  <!-- Mobile Menu -->
-  <div class="floating-nav-mobile">
-    <a href="#contact" class="nav-cta nav-cta-mobile">Contact</a>
-    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
-  </div>
-
-  <!-- Mobile Dropdown -->
-  <div class="mobile-dropdown" id="mobile-dropdown">
-    <a href="#hero">Home</a>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#awards">Awards</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-  <!-- Hero -->
-  <section id="hero" class="h-screen flex flex-col justify-center items-center text-white text-center" style="background-color: #000000cc;">
-    <!-- <img src="images/profilepic.jpg" alt="Adithya Suresh" class="w-40 h-52 rounded-full border-4 border-white shadow-lg fade-in"/> -->
-    <h1 class="text-5xl font-bold mt-4">
-      Hi, I'm
-    <span class="relative inline-block ml-3">
-    <span class="name-text relative inline-block">Adithya Suresh</span>
-    <span class="name-shine absolute inset-0 pointer-events-none"></span>
-    <span class="insert-bar absolute top-0 bottom-0 w-[3px] translate-x-[-50%] pointer-events-none"></span>
-    </span>
-    </h1>
-    <h2 class="text-2xl mt-2 mb-6 fade-in font-bold rainbow-text">Software Engineer</h2>
-      <p class="text-lg text-white-600 mb-8 fade-in">
-        Engineer by experience, innovator by mindset — crafting robust software with cloud, data, and code at its core.
-      </p>
-      <p class="text-lg text-white-600 mb-8 fade-in">
-        Actively seeking Full time/Internship opportunities in FullStack/AI/DevOps related roles for Summer 2026
-      </p>
-
-    <!-- Available for Work Indicator -->
-    <div class="available-indicator fade-in mb-4">
-      <div class="status-dot-container">
-        <span class="status-dot-ping"></span>
-        <span class="status-dot"></span>
+        <dl class="stats intro d4" aria-label="Highlights">
+          <div class="stat">
+            <dt class="stat-label">Years of enterprise experience</dt>
+            <dd class="stat-value" style="margin:0"><span data-count="4">4</span>+</dd>
+          </div>
+          <div class="stat">
+            <dt class="stat-label">GPA · M.S. Information Science</dt>
+            <dd class="stat-value" style="margin:0"><span data-count="3.92" data-decimals="2">3.92</span></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat-label">AI systems shipped</dt>
+            <dd class="stat-value" style="margin:0"><span data-count="2">2</span></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat-label">Guidewire Certified Associate</dt>
+            <dd class="stat-value" style="margin:0">Certified</dd>
+          </div>
+        </dl>
       </div>
-      <span class="status-text">Available for work</span>
     </div>
-    <!-- Download Buttons -->
-    <div class="flex flex-wrap gap-4 justify-center items-center mt-6">
-      <a href="AdithyaSuresh_Resume.pdf" download class="bg-blue-500 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition fade-in">
-        <i class="fas fa-download mr-2"></i>Download Resume</a>
-      <a href="AdithyaSuresh_CoverLetter.pdf" download class="bg-green-500 text-white px-6 py-2 rounded-lg shadow hover:bg-green-700 transition fade-in">
-        <i class="fas fa-file-alt mr-2"></i>Download Cover Letter</a>
-    </div>
-    <a href="#about" class="mt-3 bg-blue-500 text-white px-3 py-1 rounded-lg shadow hover:bg-blue-700 transition fade-in">
-      Learn More
-    </a>
-
-  <!-- Scroll Down Indicator -->
-  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 fade-in">
-    <a href="#about" class="block animate-bounce">
-      <div class="mouse-scroll"></div>
-    </a>
-  </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About"></a>
   </section>
 
-  <!-- AboutMe -->
-  <section id="about" class="py-20 px-6 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8 flex items-center gap-2 fade-in">
-      <i data-feather="user" class="text-blue-500 w-6 h-6"></i>
-      <span class="underline-animation">About Me</span>
-    </h2>
-    <div class="grid md:grid-cols-5 gap-8">
-      <div class="md:col-span-3 fade-in">
-        <p class="text-lg mb-4">
-          Software Engineer with <span class="font-semibold text-blue-700">4+ years of enterprise experience</span> designing distributed systems and cloud-native backends and a growing specialization in <span class="font-semibold text-blue-700">applied AI engineering</span>: multi-layer RAG pipelines, LLM orchestration, and real-time multi-agent architectures.
-        </p>
-        <p class="text-lg mb-4">
-          At <span class="font-semibold">Ernst & Young</span>, I owned production backend services across distributed microservices, reduced API latency by <span class="font-semibold">25%</span>, automated cloud pipelines cutting manual operations by <span class="font-semibold">40%</span>, and mentored junior engineers through complex platform migrations.
-        </p>
-        <p class="text-lg mb-6">
-          With an <span class="font-semibold">M.S. in Information Science from UNT (GPA 3.92)</span>, I build AI systems that are reliable, measurable, and production-ready — not just API integrations, but architectures designed to scale.
-        </p>
-      <!-- Quick Stats -->
-      <div class="flex flex-wrap gap-3 mb-6">
-        <div class="flex items-center gap-2 bg-gray-100 dark:bg-gray-500 px-4 py-2 rounded-full text-sm font-medium">
-          <i class="fas fa-briefcase text-blue-500 text-xs"></i>
-          4+ Years Experience
-        </div>
-        <div class="flex items-center gap-2 bg-gray-100 dark:bg-gray-500 px-4 py-2 rounded-full text-sm font-medium">
-          <i class="fas fa-graduation-cap text-blue-500 text-xs"></i>
-          GPA 3.92 / 4.0
-        </div>
-        <div class="flex items-center gap-2 bg-gray-100 dark:bg-gray-500 px-4 py-2 rounded-full text-sm font-medium">
-          <i class="fas fa-robot text-blue-500 text-xs"></i>
-          2 AI Systems Shipped
-        </div>
-        <div class="flex items-center gap-2 bg-gray-100 dark:bg-gray-500 px-4 py-2 rounded-full text-sm font-medium">
-          <i class="fas fa-certificate text-blue-500 text-xs"></i>
-          Guidewire Certified Associate
-        </div>
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">01 · About</span>
+        <h2 class="display-lg" id="about-title">Distributed systems by trade. Applied AI by choice.</h2>
       </div>
-     <div class="flex items-center gap-2">
-        <span class="relative flex h-3 w-3">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+
+      <div class="about-grid">
+        <div class="prose body-lg reveal">
+          <p>Software Engineer with <strong>4+ years of enterprise experience</strong> designing distributed systems and cloud-native backends, and a growing specialization in <strong>applied AI engineering</strong>: multi-layer RAG pipelines, LLM orchestration, and real-time multi-agent architectures.</p>
+          <p>At <strong>Ernst &amp; Young</strong>, I owned production backend services across distributed microservices, reduced API latency by <strong>25%</strong>, automated cloud pipelines cutting manual operations by <strong>40%</strong>, and mentored junior engineers through complex platform migrations.</p>
+          <p>With an <strong>M.S. in Information Science from UNT (GPA 3.92)</strong>, I build AI systems that are reliable, measurable, and production-ready — not just API integrations, but architectures designed to scale.</p>
+          <div class="tags" style="margin-top:8px">
+            <span class="chip">4+ years experience</span>
+            <span class="chip">GPA 3.92 / 4.0</span>
+            <span class="chip">2 AI systems shipped</span>
+            <span class="chip">Guidewire Certified Associate</span>
+          </div>
+        </div>
+
+        <figure class="portrait reveal" style="margin:0">
+          <img src="images/profilepic.png" alt="Portrait of Adithya Suresh" width="1024" height="1024" loading="lazy" />
+          <figcaption class="portrait-tag">
+            <span>Adithya Suresh</span>
+            <span class="muted">Software Engineer</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section" id="experience" aria-labelledby="experience-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">02 · Experience</span>
+        <h2 class="display-lg" id="experience-title">Where I've shipped.</h2>
+      </div>
+
+      <ol class="roles">
+        <li class="role reveal">
+          <div class="role-meta">
+            <span class="logo-tile"><img src="images/ey-logo.png" alt="EY logo" loading="lazy" /></span>
+            <div>
+              <div class="role-company">Ernst &amp; Young</div>
+              <div class="role-dates">Oct 2022 – Jul 2024</div>
+              <span class="chip chip-muted role-duration">1 yr 10 mos</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="display-md role-title">Software Engineer</h3>
+            <ul class="bullets">
+              <li>Migrated legacy <strong>logging from v8 to log4j.xml in v10</strong>, boosting system efficiency and reducing error-detection time.</li>
+              <li>Diagnosed and resolved <strong>20+ DBCC issues</strong> via targeted code fixes and SQL scripts, improving database reliability.</li>
+              <li>Standardized logging and alerting for system exceptions, enabling faster incident response and fixing <strong>10+ critical bugs weekly</strong>.</li>
+              <li>Automated data workflows using GOSU and SQL scripts, reducing manual <strong>processing effort by 40%</strong>.</li>
+              <li>Optimized API integrations, cutting data processing time by <strong>25%</strong> and improving system interoperability.</li>
+              <li>Partnered with stakeholders to <strong>resolve high-priority defects</strong>, ensuring uninterrupted business operations.</li>
+              <li>Delivered a live API integration demo that secured <strong>client adoption</strong> and streamlined operations.</li>
+              <li>Mentored <strong>5+ junior developers</strong>, reducing onboarding time and increasing team productivity.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="role reveal">
+          <div class="role-meta">
+            <span class="logo-tile"><img src="images/ey-logo.png" alt="EY logo" loading="lazy" /></span>
+            <div>
+              <div class="role-company">Ernst &amp; Young</div>
+              <div class="role-dates">Apr 2021 – Sep 2022</div>
+              <span class="chip chip-muted role-duration">1 yr 6 mos</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="display-md role-title">Associate Software Engineer</h3>
+            <ul class="bullets">
+              <li>Developed and deployed software fixes for <strong>100+ critical defects</strong>, enhancing system stability and uptime.</li>
+              <li>Improved billing accuracy by <strong>15%</strong> by optimizing medical exposure functionality and invoice workflows.</li>
+              <li>Configured PCF structures for UI components, improving workflow efficiency and user satisfaction.</li>
+              <li>Strengthened exception handling, <strong>reducing system failures by 20%</strong> and improving user experience.</li>
+              <li>Coordinated <strong>multi-environment production releases</strong>, ensuring seamless deployments with minimal downtime.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="role reveal">
+          <div class="role-meta">
+            <span class="logo-tile"><img src="images/BEL_logo.png" alt="Bharat Electronics Limited logo" loading="lazy" /></span>
+            <div>
+              <div class="role-company">Bharat Electronics Limited</div>
+              <div class="role-dates">Apr 2018 – Sep 2019</div>
+              <span class="chip chip-muted role-duration">1 yr 6 mos</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="display-md role-title">Student Intern</h3>
+            <ul class="bullets">
+              <li>Completed cross-departmental training in <strong>Testing, Quality Management, and Development &amp; Engineering</strong>, gaining exposure to full product-lifecycle processes.</li>
+              <li>Assisted in testing and inspection procedures, ensuring adherence to industry standards and quality benchmarks.</li>
+              <li>Applied quality-management practices to identify defects, support process optimization, and maintain accurate documentation.</li>
+              <li>Contributed to Development &amp; Engineering activities, including product development, circuit design, and system integration.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">03 · Skills</span>
+        <h2 class="display-lg" id="skills-title">The toolkit.</h2>
+        <p class="body-lg muted">Skills marked ↗ are clickable — pick one to see the projects that use it.</p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-card reveal">
+          <div class="skill-card-head"><h3>AI &amp; Data</h3><span class="skill-count">10</span></div>
+          <div class="tags">
+            <button class="tag" data-skill="llm">LLM Integration</button>
+            <button class="tag" data-skill="rag">RAG / GraphRAG</button>
+            <button class="tag" data-skill="faiss">FAISS</button>
+            <button class="tag" data-skill="langchain">LangChain</button>
+            <button class="tag" data-skill="llamaindex">LlamaIndex</button>
+            <button class="tag" data-skill="spacy">spaCy</button>
+            <button class="tag" data-skill="openai">OpenAI</button>
+            <button class="tag" data-skill="kafka">Apache Kafka</button>
+            <span class="tag">Apache Airflow</span>
+            <button class="tag" data-skill="streamlit">Streamlit</button>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <div class="skill-card-head"><h3>Programming Languages</h3><span class="skill-count">8</span></div>
+          <div class="tags">
+            <button class="tag" data-skill="python">Python</button>
+            <span class="tag">Java</span>
+            <button class="tag" data-skill="sql">SQL</button>
+            <button class="tag" data-skill="javascript">JavaScript</button>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Go</span>
+            <span class="tag">C/C++</span>
+            <span class="tag">GOSU</span>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <div class="skill-card-head"><h3>Backend, Frameworks &amp; Databases</h3><span class="skill-count">12</span></div>
+          <div class="tags">
+            <span class="tag">Spring Boot</span>
+            <button class="tag" data-skill="nodejs">Node.js</button>
+            <button class="tag" data-skill="express">Express.js</button>
+            <span class="tag">React.js</span>
+            <span class="tag">Microservices</span>
+            <span class="tag">Redis</span>
+            <button class="tag" data-skill="postgresql">PostgreSQL</button>
+            <button class="tag" data-skill="mysql">MySQL</button>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Oracle</span>
+            <span class="tag">REST</span>
+            <span class="tag">SOAP</span>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <div class="skill-card-head"><h3>Cloud, DevOps &amp; Monitoring</h3><span class="skill-count">11</span></div>
+          <div class="tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Azure</span>
+            <span class="tag">GCP</span>
+            <button class="tag" data-skill="docker">Docker</button>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Jenkins</span>
+            <span class="tag">Splunk</span>
+            <span class="tag">ELK (Elastic)</span>
+            <span class="tag">Git</span>
+            <span class="tag">GitLab</span>
+          </div>
+        </article>
+
+        <article class="skill-card reveal">
+          <div class="skill-card-head"><h3>Tools &amp; Platforms</h3><span class="skill-count">8</span></div>
+          <div class="tags">
+            <span class="tag">Guidewire</span>
+            <span class="tag">Postman</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">Jira</span>
+            <span class="tag">ServiceNow</span>
+            <span class="tag">Log4j</span>
+            <span class="tag">Visual Studio</span>
+            <span class="tag">Scrum / Agile</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">04 · Projects</span>
+        <h2 class="display-lg" id="projects-title">Selected work.</h2>
+      </div>
+
+      <div class="projects-toolbar reveal">
+        <div class="tabs" role="tablist" aria-label="Filter projects">
+          <button class="tab" role="tab" aria-selected="true" data-filter="all">All<span class="count"></span></button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="ai">AI &amp; ML<span class="count"></span></button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="web">Full-Stack &amp; Web<span class="count"></span></button>
+        </div>
+        <span class="filter-note" id="filter-note" aria-live="polite">
+          <span>Showing projects using <strong id="filter-skill"></strong></span>
+          <button type="button" id="filter-clear">Clear</button>
         </span>
-        <span class="text-sm font-medium text-black-600 dark:text-black-400">
-          Actively seeking full-time opportunities — AI Engineering · Full-Stack · Backend
-        </span>
       </div>
+
+      <div class="project-grid" id="project-grid">
+
+        <article class="project featured grad-violet spot reveal" data-cat="ai" data-tech="python langchain kafka openai llm faiss rag spacy docker streamlit postgresql" data-repo="https://github.com/Adithya280399/geo-risk-agent">
+          <div class="project-head">
+            <span class="project-kind">AI · Multi-agent system</span>
+            <a class="icon-btn gh-link" href="https://github.com/Adithya280399/geo-risk-agent" target="_blank" rel="noopener" aria-label="Geopolitical Risk Intelligence Agent on GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
+          </div>
+          <h3>Geopolitical Risk Intelligence Agent</h3>
+          <p class="project-summary">Real-time multi-agent AI system for geopolitical risk analysis and executive intelligence reporting.</p>
+          <div class="project-foot">
+            <div class="project-tags">
+              <span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">Apache Kafka</span><span class="tag">OpenAI / GPT-4o-mini</span><span class="tag">FAISS / RAG</span><span class="tag">spaCy NLP</span><span class="tag">Docker</span><span class="tag">Streamlit</span><span class="tag">PostgreSQL</span>
+            </div>
+            <div class="project-actions">
+              <button class="project-open" type="button">Read case study <svg aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+            </div>
+          </div>
+          <template class="project-detail">
+            <p>Architected a real-time multi-agent AI system ingesting live news via Apache Kafka, enriching articles with spaCy NLP (entity extraction, risk classification), and storing results in PostgreSQL across a fully containerized Docker infrastructure.</p>
+            <p>Built a 3-layer RAG pipeline — OpenAI embeddings in FAISS, semantic retrieval, and GPT-4o-mini brief generation — orchestrated by a LangChain multi-agent system (MonitorAgent, CountryAgent, ReportAgent) producing structured executive intelligence reports.</p>
+            <p>Delivered a Streamlit dashboard processing 143+ real-time articles across 5 risk categories.</p>
+          </template>
+        </article>
+
+        <article class="project featured grad-sunset spot reveal" data-cat="ai" data-tech="python openai llm faiss llamaindex rag" data-repo="https://github.com/Adithya280399/HealthCareAI">
+          <div class="project-head">
+            <span class="project-kind">AI · RAG / GraphRAG</span>
+            <a class="icon-btn gh-link" href="https://github.com/Adithya280399/HealthCareAI" target="_blank" rel="noopener" aria-label="Healthcare AI Chatbot on GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
+          </div>
+          <h3>Healthcare AI Chatbot</h3>
+          <p class="project-summary">A clinically grounded healthcare AI assistant using a multi-layer RAG pipeline (dual-vector retrieval + GraphRAG), improving answer correctness to 4.1/5 across 400+ evaluated medical QA pairs.</p>
+          <div class="project-foot">
+            <div class="project-tags">
+              <span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">Vector DB (FAISS)</span><span class="tag">LlamaIndex</span><span class="tag">RAG / GraphRAG</span><span class="tag">BLEU · ROUGE · BERTScore · EM</span>
+            </div>
+            <div class="project-actions">
+              <button class="project-open" type="button">Read case study <svg aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+            </div>
+          </div>
+          <template class="project-detail">
+            <p>Built a clinically grounded AI health assistant using a multi-layer RAG pipeline (dual-vector retrieval, GraphRAG, rule-based indexing), improving retrieval accuracy and reducing hallucinations across 400+ evaluated QA pairs.</p>
+            <p>Designed evaluation frameworks (BLEU, ROUGE, BERTScore, Exact Match) and safety guardrails that increased correctness to 4.1/5 and conciseness to 4.5/5 while ensuring traceable, evidence-backed responses.</p>
+          </template>
+        </article>
+
+        <article class="project spot reveal" data-cat="ai" data-tech="python openai llm flask" data-repo="https://github.com/Adithya280399/ai-blog-generator-Adithya">
+          <div class="project-head">
+            <span class="project-kind">AI · Content generation</span>
+            <a class="icon-btn gh-link" href="https://github.com/Adithya280399/ai-blog-generator-Adithya" target="_blank" rel="noopener" aria-label="AI Blog Generator on GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
+          </div>
+          <h3>AI Blog Generator</h3>
+          <p class="project-summary">Generates blog posts from keywords.</p>
+          <div class="project-foot">
+            <div class="project-tags"><span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">Flask</span></div>
+            <div class="project-actions"><button class="project-open" type="button">Details <svg aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
+          </div>
+          <template class="project-detail">
+            <p>An AI-powered Flask web app that generates SEO-optimized blog posts daily using OpenAI and serves browser-friendly previews with automated scheduling.</p>
+          </template>
+        </article>
+
+        <article class="project spot reveal" data-cat="web" data-tech="javascript nodejs express postgresql html tailwind" data-repo="https://github.com/Adithya280399/WeatherApp">
+          <div class="project-head">
+            <span class="project-kind">Full-stack · Web app</span>
+            <a class="icon-btn gh-link" href="https://github.com/Adithya280399/WeatherApp" target="_blank" rel="noopener" aria-label="Weather Forecast App on GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
+          </div>
+          <h3>Weather Forecast App</h3>
+          <p class="project-summary">Forecasts the weather for any location name or PIN code.</p>
+          <div class="project-foot">
+            <div class="project-tags"><span class="tag">HTML</span><span class="tag">Tailwind CSS</span><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span></div>
+            <div class="project-actions"><button class="project-open" type="button">Details <svg aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
+          </div>
+          <template class="project-detail">
+            <p>A dynamic full-stack weather app that fetches real-time and forecast data based on user input or geolocation, with persistent storage and CRUD features.</p>
+          </template>
+        </article>
+
+        <article class="project spot reveal" data-cat="web" data-tech="mysql sql" data-repo="https://github.com/Adithya280399/Claim-Management-System">
+          <div class="project-head">
+            <span class="project-kind">Systems · Insurance</span>
+            <a class="icon-btn gh-link" href="https://github.com/Adithya280399/Claim-Management-System" target="_blank" rel="noopener" aria-label="Claim Management System on GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
+          </div>
+          <h3>Claim Management System</h3>
+          <p class="project-summary">Web-based insurance claim tracking.</p>
+          <div class="project-foot">
+            <div class="project-tags"><span class="tag">MySQL</span><span class="tag">Draw.io</span><span class="tag">Excel</span></div>
+            <div class="project-actions"><button class="project-open" type="button">Details <svg aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
+          </div>
+          <template class="project-detail">
+            <p>Developed a web-based system for managing insurance claims efficiently, enabling automated tracking, approvals, and audit logging.</p>
+          </template>
+        </article>
+
+        <article class="project spot reveal" data-cat="web ai" data-tech="javascript html tailwind" data-repo="https://github.com/Adithya280399/FitnessTracker">
+          <div class="project-head">
+            <span class="badge badge-live">In progress</span>
+            <a class="icon-btn gh-link" href="https://github.com/Adithya280399/FitnessTracker" target="_blank" rel="noopener" aria-label="Fitness Tracker on GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
+          </div>
+          <h3>Fitness Tracker</h3>
+          <p class="project-summary">An AI-assisted fitness tracker that suggests better meal and workout plans.</p>
+          <div class="project-foot">
+            <div class="project-tags"><span class="tag">HTML</span><span class="tag">Tailwind CDN</span><span class="tag">JavaScript</span></div>
+            <div class="project-actions"><button class="project-open" type="button">Details <svg aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
+          </div>
+          <template class="project-detail">
+            <p>Developing a personalized fitness tracker that uses AI to track progress and suggest better meal and workout plans, accessible on phone and web.</p>
+          </template>
+        </article>
+
+        <article class="project spot reveal" data-cat="web" data-tech="javascript html css" data-repo="https://github.com/Adithya280399/MyPortfolio">
+          <div class="project-head">
+            <span class="project-kind">Web · This site</span>
+            <a class="icon-btn gh-link" href="https://github.com/Adithya280399/MyPortfolio" target="_blank" rel="noopener" aria-label="My Portfolio on GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
+          </div>
+          <h3>My Portfolio</h3>
+          <p class="project-summary">E-portfolio.</p>
+          <div class="project-foot">
+            <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+            <div class="project-actions"><button class="project-open" type="button">Details <svg aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
+          </div>
+          <template class="project-detail">
+            <p>Designed and built this portfolio to showcase my skills and experience, using the skills I've gained. Hand-written HTML, CSS, and JavaScript with no frameworks, including a command palette, filterable projects, and accessible dialogs.</p>
+          </template>
+        </article>
+
+        <a class="project spot reveal project-more" href="https://github.com/adithya280399" target="_blank" rel="noopener" data-cat="all">
+          <div class="project-head">
+            <span class="project-kind">GitHub</span>
+            <span class="icon-btn gh-link" aria-hidden="true"><svg><use href="#i-arrow-up-right"/></svg></span>
+          </div>
+          <h3>More on GitHub</h3>
+          <p class="project-summary">Browse all repositories, experiments, and work in progress.</p>
+          <div class="project-foot">
+            <div class="project-actions"><span class="project-open">github.com/adithya280399 <svg aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></div>
+          </div>
+        </a>
       </div>
-      <div class="md:col-span-2 flex justify-center">
-        <div class="relative w-64 h-64">
-          <img src="images/profilepic.png" alt="Adithya Suresh" class="w-full h-full rounded-lg object-cover border-4 border-white shadow-xl"/>
-          <div class="absolute -inset-4 border-2 border-blue-700 rounded-lg z-[-1]"></div>
+
+      <div class="projects-empty" id="projects-empty">No projects match this filter yet.</div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section class="section" id="education" aria-labelledby="education-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">05 · Education</span>
+        <h2 class="display-lg" id="education-title">Education.</h2>
+      </div>
+      <div class="edu-grid">
+        <article class="edu-card reveal">
+          <div class="edu-top">
+            <span class="chip">May 2026</span>
+            <span class="caption muted">GPA 3.92 / 4.0</span>
+          </div>
+          <h3 class="display-md">Master of Science — Information Science</h3>
+          <p class="muted">University of North Texas</p>
+        </article>
+        <article class="edu-card reveal">
+          <div class="edu-top">
+            <span class="chip">May 2020</span>
+          </div>
+          <h3 class="display-md">Bachelor of Engineering — Electronics and Communication Engineering</h3>
+          <p class="muted">Jeppiaar Engineering College (Anna University)</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS & AWARDS ============ -->
+  <section class="section" id="credentials" aria-labelledby="credentials-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">06 · Credentials</span>
+        <h2 class="display-lg" id="credentials-title">Certifications &amp; awards.</h2>
+      </div>
+
+      <div class="split">
+        <div class="reveal" id="certifications">
+          <div class="list-title"><h3 class="headline">Certifications</h3><span class="caption muted">6</span></div>
+          <ul class="rows">
+            <li class="row"><span class="row-title">Specialist Certification — ClaimCenter 10.0 Configuration</span><span class="row-issuer">Guidewire</span></li>
+            <li class="row"><span class="row-title">Associate Certification — InsuranceSuite 10.0 Developer</span><span class="row-issuer">Guidewire</span></li>
+            <li class="row"><span class="row-title">InsuranceSuite 10.0 Fundamentals</span><span class="row-issuer">Guidewire</span></li>
+            <li class="row"><span class="row-title">Azure AZ-900</span><span class="row-issuer">Microsoft</span></li>
+            <li class="row"><span class="row-title">Splunk Fundamentals</span><span class="row-issuer">Splunk</span></li>
+            <li class="row"><span class="row-title">Campus Connect Foundation Program</span><span class="row-issuer">Infosys</span></li>
+          </ul>
+        </div>
+
+        <div class="reveal" id="awards">
+          <div class="list-title"><h3 class="headline">Awards</h3><span class="caption muted">2</span></div>
+          <ul class="rows">
+            <li class="row">
+              <div>
+                <div class="row-title">Spot Award</div>
+                <div class="row-sub">For dedication and perseverance in fulfilling requirements and meeting targets on time.</div>
+              </div>
+              <span class="row-issuer">EY</span>
+            </li>
+            <li class="row">
+              <div>
+                <div class="row-title">Client appreciation</div>
+                <div class="row-sub">For taking on automation work at short notice.</div>
+              </div>
+              <span class="row-issuer">EY client</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
-  <!-- Experience Section -->
-  <section id="experience" class="py-20 px-6 max-w-4xl mx-auto fade-in">
-    <h2 class="text-3xl font-bold mb-2 flex items-center gap-2 fade-in">
-      <i data-feather="briefcase" class="text-blue-500 w-6 h-6"></i>
-      <span class="underline-animation">Experience</span>
-    </h2>
-  
-      <!-- Experience Card 1 -->
-      <div class="p-10 bg-white dark:bg-gray-700 shadow-md rounded-xl p-6 mb-6 transition-colors duration-300">
-        <h3 class="text-xl text-gray-500 dark:text-gray-300 font-semibold">Software Engineer<img src="images/ey-logo.png" alt="EY Logo" class="w-7 h-7 object-contain"/></h3>
-        <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Ernst and Young (10/2022 – 07/2024)</p>
-        <ul class="list-disc list-inside text-gray-800 dark:text-gray-200 space-y-1">
-          <li>Migrated legacy <strong>logging from v8 to log4j.xml in v10 </strong>boosting system efficiency and reducing error detection time.</li>
-          <li>Diagnosed and resolved <strong>20+ DBCC issues</strong> via targeted code fixes and SQL scripts, improving database reliability.</code>.</li>
-          <li>Standardized logging and alerting for system exceptions, enabling faster incident response and fixing <strong>10+ critical bugs weekly.</strong></li>
-          <li>Automated data workflows using GOSU and SQL scripts, reducing manual <strong>processing effort by 40%.</strong></li>
-          <li>Optimized API integrations, cutting data processing time by <strong>25% and improving system interoperability.</strong></li>
-          <li>Partnered with stakeholders to <strong>resolve high-priority defects, </strong>ensuring uninterrupted business operations.</li>
-          <li>Delivered a live API integration demo that secured <strong>client adoption and streamlined operations.</strong></li>
-          <li>Mentored <strong>5+ junior developers</strong> reducing onboarding time and increasing team productivity.</li>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <span class="eyebrow reveal">07 · Contact</span>
+      <h2 class="display-xl contact-title reveal" id="contact-title" style="margin-top:16px">Let's build something reliable.</h2>
+      <div class="contact-body">
+        <p class="body-lg muted contact-copy reveal">I'm currently looking for full-time software engineering roles. Whether you have a question or just want to say hi, I'll do my best to get back to you!</p>
+        <div class="contact-actions reveal">
+          <a href="mailto:adithyasuresh470@gmail.com" class="btn btn-primary magnetic"><svg aria-hidden="true"><use href="#i-mail"/></svg>Say hello</a>
+          <span class="email-chip">
+            adithyasuresh470@gmail.com
+            <button class="icon-btn" type="button" data-copy="adithyasuresh470@gmail.com" aria-label="Copy email address"><svg aria-hidden="true"><use href="#i-copy"/></svg></button>
+          </span>
+          <a class="icon-btn" href="https://www.linkedin.com/in/adithya-suresh-044435166/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+          <a class="icon-btn" href="https://github.com/adithya280399" target="_blank" rel="noopener" aria-label="GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#hero" class="brand"><span class="brand-mark">AS</span><span style="color:var(--ink)">Adithya Suresh</span></a>
+        <p style="margin-top:14px;max-width:34ch;line-height:1.5">Software Engineer — distributed systems, cloud-native backends, and applied AI.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
         </ul>
       </div>
-  
-      <!-- Experience Card 2 -->
-      <div class="p-10 bg-white dark:bg-gray-700 shadow-md rounded-xl p-6 mb-6 transition-colors duration-300">
-        <h3 class="text-xl text-gray-500 dark:text-gray-300 font-semibold">Associate Software Engineer<img src="images/ey-logo.png" alt="EY Logo" class="w-7 h-7 object-contain"/></h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
-          Ernst and Young (04/2021 – 09/2022)</p>
-        <ul class="list-disc list-inside text-gray-800 dark:text-gray-200 space-y-1">
-          <li>Developed and deployed software fixes for <strong>100+ critical defects,</strong> enhancing system stability and uptime.</li>
-          <li>Improved billing accuracy by <strong>15% through optimization </strong> of medical exposure functionalities and invoice workflows.</li>
-          <li>Configured PCF structures for UI components, improving workflow efficiency and user satisfaction.</li>
-          <li>Strengthened exception handling, reducing system failures by <strong>20% and improving user experience.</strong></li>
-          <li>Coordinated <strong>multi-environment production releases</strong> ensuring seamless deployments with minimal downtime.</li>
+      <div>
+        <h4>More</h4>
+        <ul>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#awards">Awards</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-
-      <!-- Experience Card 3 -->
-      <div class="p-10 bg-white dark:bg-gray-700 shadow-md rounded-xl p-6 mb-6 transition-colors duration-300">
-        <h3 class="text-xl text-gray-500 dark:text-gray-300 font-semibold">Student Intern<img src="images/BEL_logo.png" alt="BEL Logo" class="w-9 h-9 object-contain"/></h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
-          Bharat Electronics Limited (04/2018 – 09/2019)</p>
-        <ul class="list-disc list-inside text-gray-800 dark:text-gray-200 space-y-1">
-          <li>Completed cross-departmental training in Testing, Quality Management, and Development & Engineering, gaining exposure to full product lifecycle processes.</li>
-          <li>Assisted in testing and inspection procedures, ensuring adherence to industry standards and quality benchmarks.</li>
-          <li>Applied quality management practices to identify defects, support process optimization, and maintain accurate documentation.</li>
-          <li>Contributed to Development & Engineering activities, including product development, circuit design, and system integration, enhancing technical proficiency.</li>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:adithyasuresh470@gmail.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/adithya-suresh-044435166/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/adithya280399" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="AdithyaSuresh_Resume.pdf" download>Resume (PDF)</a></li>
         </ul>
       </div>
-    </section>
-
-  <!-- Skills -->
-<section id="skills" class="py-20 px-6 max-w-4xl mx-auto fade-in">
-  <h2 class="text-3xl font-bold mb-6 flex items-center gap-2">
-    <i data-feather="cpu" class="text-blue-500 w-6 h-6"></i>
-    <span class="underline-animation">Skills</span>
-  </h2>
-  <div class="grid md:grid-cols-2 gap-6">
-
-    <!-- AI & Data -->
-    <div><strong>AI & Data</strong></div>
-    <div class="flex flex-wrap gap-2">
-      <span class="bg-violet-100 text-violet-800 dark:bg-violet-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-violet-700 cursor-pointer">LLM Integration</span>
-      <span class="bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-fuchsia-700 cursor-pointer">RAG / GraphRAG</span>
-      <span class="bg-blue-100 text-blue-800 dark:bg-blue-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-blue-700 cursor-pointer">FAISS</span>
-      <span class="bg-green-100 text-green-800 dark:bg-green-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-green-700 cursor-pointer">LangChain</span>
-      <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-700 cursor-pointer">LlamaIndex</span>
-      <span class="bg-pink-100 text-pink-800 dark:bg-pink-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-pink-700 cursor-pointer">spaCy</span>
-      <span class="bg-orange-100 text-orange-800 dark:bg-orange-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-orange-700 cursor-pointer">OpenAI</span>
-      <span class="bg-red-100 text-red-800 dark:bg-red-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-red-700 cursor-pointer">Apache Kafka</span>
-      <span class="bg-indigo-100 text-indigo-800 dark:bg-indigo-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-indigo-700 cursor-pointer">Apache Airflow</span>
-      <span class="bg-teal-100 text-teal-800 dark:bg-teal-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-teal-700 cursor-pointer">Streamlit</span>
     </div>
-
-    <!-- Programming Languages -->
-    <div><strong>Programming Languages</strong></div>
-    <div class="flex flex-wrap gap-2">
-      <span class="bg-red-100 text-red-800 dark:bg-red-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-red-700 cursor-pointer">Python</span>
-      <span class="bg-green-100 text-green-800 dark:bg-green-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-green-700 cursor-pointer">Java</span>
-      <span class="bg-blue-100 text-blue-800 dark:bg-blue-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-blue-700 cursor-pointer">SQL</span>
-      <span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-700 cursor-pointer">JavaScript</span>
-      <span class="bg-blue-200 text-blue-900 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-blue-700 cursor-pointer">TypeScript</span>
-      <span class="bg-teal-100 text-teal-800 dark:bg-teal-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-teal-700 cursor-pointer">Go</span>
-      <span class="bg-purple-100 text-purple-800 dark:bg-purple-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-purple-700 cursor-pointer">C/C++</span>
-      <span class="bg-pink-100 text-pink-800 dark:bg-pink-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-pink-700 cursor-pointer">GOSU</span>
+    <div class="footer-word" aria-hidden="true">Adithya Suresh</div>
+    <div class="footer-bottom">
+      <span>Designed &amp; Built by Adithya Suresh</span>
+      <span>© <span id="year">2026</span> All Rights Reserved</span>
     </div>
-
-    <!-- Backend, Frameworks & Databases (merged) -->
-    <div><strong>Backend, Frameworks & Databases</strong></div>
-    <div class="flex flex-wrap gap-2">
-      <span class="bg-blue-200 text-blue-900 dark:bg-blue-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-blue-700 cursor-pointer">Spring Boot</span>
-      <span class="bg-cyan-100 text-cyan-800 dark:bg-cyan-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-cyan-700 cursor-pointer">Node.js</span>
-      <span class="bg-gray-200 text-gray-900 dark:bg-gray-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-gray-700 cursor-pointer">Express.js</span>
-      <span class="bg-pink-200 text-pink-900 dark:bg-pink-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-pink-700 cursor-pointer">React.js</span>
-      <span class="bg-orange-100 text-orange-800 dark:bg-orange-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-orange-700 cursor-pointer">Microservices</span>
-      <span class="bg-red-200 text-red-900 dark:bg-red-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-red-700 cursor-pointer">Redis</span>
-      <span class="bg-green-100 text-green-800 dark:bg-green-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-green-700 cursor-pointer">PostgreSQL</span>
-      <span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-700 cursor-pointer">MySQL</span>
-      <span class="bg-pink-100 text-pink-800 dark:bg-pink-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-pink-700 cursor-pointer">MongoDB</span>
-      <span class="bg-indigo-100 text-indigo-800 dark:bg-indigo-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-indigo-700 cursor-pointer">Oracle</span>
-      <span class="bg-blue-100 text-blue-800 dark:bg-blue-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-blue-700 cursor-pointer">REST</span>
-      <span class="bg-green-100 text-green-800 dark:bg-green-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-green-700 cursor-pointer">SOAP</span>
-    </div>
-
-    <!-- Cloud, DevOps & Monitoring (merged) -->
-    <div><strong>Cloud, DevOps & Monitoring</strong></div>
-    <div class="flex flex-wrap gap-2">
-      <span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-700 cursor-pointer">AWS</span>
-      <span class="bg-blue-200 text-blue-900 dark:bg-blue-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-blue-700 cursor-pointer">Azure</span>
-      <span class="bg-indigo-100 text-indigo-800 dark:bg-indigo-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-indigo-700 cursor-pointer">GCP</span>
-      <span class="bg-blue-200 text-blue-900 dark:bg-blue-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-blue-700 cursor-pointer">Docker</span>
-      <span class="bg-indigo-100 text-indigo-800 dark:bg-indigo-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-indigo-700 cursor-pointer">Kubernetes</span>
-      <span class="bg-green-200 text-green-900 dark:bg-green-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-green-700 cursor-pointer">CI/CD</span>
-      <span class="bg-green-200 text-green-900 dark:bg-green-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-green-700 cursor-pointer">Jenkins</span>
-      <span class="bg-red-100 text-red-800 dark:bg-red-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-red-700 cursor-pointer">Splunk</span>
-      <span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-700 cursor-pointer">ELK (Elastic)</span>
-      <span class="bg-gray-200 text-gray-900 dark:bg-gray-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-gray-700 cursor-pointer">Git</span>
-      <span class="bg-purple-100 text-purple-800 dark:bg-purple-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-purple-700 cursor-pointer">GitLab</span>
-    </div>
-
-    <!-- Tools & Platforms (merged Other Tools + Agile + Guidewire) -->
-    <div><strong>Tools & Platforms</strong></div>
-    <div class="flex flex-wrap gap-2">
-      <span class="bg-purple-200 text-purple-900 dark:bg-purple-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-purple-700 cursor-pointer">Guidewire</span>
-      <span class="bg-green-100 text-green-800 dark:bg-green-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-green-700 cursor-pointer">Postman</span>
-      <span class="bg-blue-100 text-blue-800 dark:bg-blue-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-blue-700 cursor-pointer">Tableau</span>
-      <span class="bg-purple-200 text-purple-900 dark:bg-purple-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-purple-700 cursor-pointer">Jira</span>
-      <span class="bg-purple-300 text-purple-900 dark:bg-purple-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-purple-700 cursor-pointer">ServiceNow</span>
-      <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-700 cursor-pointer">Log4j</span>
-      <span class="bg-indigo-200 text-indigo-900 dark:bg-indigo-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-indigo-700 cursor-pointer">Visual Studio</span>
-      <span class="bg-yellow-200 text-yellow-900 dark:bg-yellow-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium transition-transform transform hover:shadow-lg hover:bg-yellow-700 cursor-pointer">Scrum / Agile</span>
-    </div>
-
   </div>
-</section>
+</footer>
 
-  <!-- Education -->
-  <section id="education" class="py-20 px-6 max-w-4xl mx-auto fade-in">
-    <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
-      <i data-feather="book-open" class="text-blue-500 w-6 h-6"></i>
-      <span class="underline-animation">Education</span>
-    </h2>
-    <ul class="mt-2">
-      <li><strong>Master of Science - Information science</strong> - University of North Texas (May 2026)</li>
-      <li><strong>Bachelor of Engineering - Electronics and Communication Engineering</strong> - Jeppiaar Engineering College(Anna University - May 2020)</li>
-    </ul>
-  </section>
+<!-- Back to top (with scroll-progress ring) -->
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">
+  <svg class="ring" viewBox="0 0 48 48" aria-hidden="true">
+    <circle class="ring-track" cx="24" cy="24" r="22" fill="none" stroke-width="2"/>
+    <circle class="ring-fill" id="ring-fill" cx="24" cy="24" r="22" fill="none" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <svg class="arrow" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+</button>
 
-  <!-- Projects -->
-  <section id="projects" class="py-20 px-6 max-w-6xl mx-auto fade-in">
-    <h2 class="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-2">
-      <i class="fas fa-code text-blue-500"></i>
-      <span class="underline-animation">Projects</span>
-    </h2>
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"><svg aria-hidden="true"><use href="#i-check"/></svg><span id="toast-text"></span></div>
 
-    <!-- Swiper Container -->
-    <div class="relative">
-      <div class="swiper projects-swiper">
-        <div class="swiper-wrapper">
-
-
-          
-          <!-- Project Card 0 -->
-          <div class="swiper-slide">
-            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-              <div class="flex justify-between items-start mb-4">
-                <div class="flex-1">
-                  <h3 class="text-xl text-gray-500 dark:text-gray-300 font-semibold mb-2">Geopolitical Risk Intelligence Agent</h3>
-                  <p class="text-sm text-gray-500 mb-3">Real-time multi-agent AI system for geopolitical risk analysis and executive intelligence reporting</p>
-                </div>
-                <a href="https://github.com/Adithya280399/geo-risk-agent" target="_blank" 
-                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
-                  <i class="fab fa-github text-2xl"></i>
-                </a>
-              </div>
-              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
-                Architected a real-time multi-agent AI system ingesting live news via Apache Kafka, enriching articles with spaCy NLP (entity extraction, risk classification), and storing results in PostgreSQL across a fully containerized Docker infrastructure. Built a 3-layer RAG pipeline — OpenAI embeddings in FAISS, semantic retrieval, and GPT-4o-mini brief generation — orchestrated by a LangChain multi-agent system (MonitorAgent, CountryAgent, ReportAgent) producing structured executive intelligence reports. Delivered a Streamlit dashboard processing 143+ real-time articles across 5 risk categories.
-              </p>
-              <div class="flex flex-wrap gap-2 mt-auto">
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Python</span>
-                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">LangChain</span>
-                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Apache Kafka</span>
-                <span class="bg-orange-100 text-orange-500 dark:bg-orange-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium">OpenAI / GPT-4o-mini</span>
-                <span class="bg-purple-100 text-purple-800 dark:bg-purple-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">FAISS / RAG</span>
-                <span class="bg-pink-100 text-pink-800 dark:bg-pink-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">spaCy NLP</span>
-                <span class="bg-gray-100 text-gray-900 dark:bg-gray-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Docker</span>
-                <span class="bg-indigo-100 text-indigo-800 dark:bg-indigo-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Streamlit</span>
-                <span class="bg-teal-100 text-teal-800 dark:bg-teal-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card  1-->
-          <div class="swiper-slide">
-            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-              <div class="flex justify-between items-start mb-4">
-                <div class="flex-1">
-                  <h3 class="text-xl text-gray-500 dark:text-gray-300 font-semibold mb-2">Healthcare AI Chat bot</h3>
-                  <p class="text-sm text-gray-500 mb-3">Built a clinically grounded healthcare AI assistant using a multi-layer RAG pipeline (dual-vector retrieval + GraphRAG), improving answer correctness to 4.1/5 across 400+ evaluated medical QA pairs.</p>
-                </div>
-                <a href="https://github.com/Adithya280399/HealthCareAI" target="_blank" 
-                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
-                  <i class="fab fa-github text-2xl"></i>
-                </a>
-              </div>
-              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
-                Built a clinically grounded AI health assistant using a multi-layer RAG pipeline (dual-vector retrieval, GraphRAG, rule-based indexing), improving retrieval accuracy and reducing hallucinations across 400+ evaluated QA pairs. Designed evaluation frameworks (BLEU, ROUGE, BERTScore, EM) and safety guardrails that increased correctness to 4.1/5 and conciseness to 4.5/5 while ensuring traceable evidence-backed responses.
-              </p>
-              <div class="flex flex-wrap gap-2 mt-auto">
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Python</span>
-                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">OpenAI</span>
-                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Vector DB(Faiss)</span>
-                <span class="bg-orange-100 text-orange-500 dark:bg-orange-500 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Evaluation Metrics: BLEU, ROUGE, BERTScore, Exact Match</span>
-                <span class="bg-purple-100 text-purple-800 dark:bg-purple-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">LlamaIndex</span>
-                <span class="bg-gray-100 text-gray-900 dark:bg-gray-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">RAG/GraphRAG</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 2 -->
-          <div class="swiper-slide">
-            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-              <div class="flex justify-between items-start mb-4">
-                <div class="flex-1">
-                  <h3 class="text-xl text-gray-500 dark:text-gray-300 font-semibold mb-2">AI Blog Generator</h3>
-                  <p class="text-sm text-gray-500 mb-3">Generates blog posts using keywords</p>
-                </div>
-                <a href="https://github.com/Adithya280399/ai-blog-generator-Adithya" target="_blank" 
-                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
-                  <i class="fab fa-github text-2xl"></i>
-                </a>
-              </div>
-              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
-                An AI-powered Flask web app that generates SEO-optimized blog posts daily using OpenAI and serves browser-friendly previews with automated scheduling.
-              </p>
-              <div class="flex flex-wrap gap-2 mt-auto">
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Python</span>
-                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">OpenAI</span>
-                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Flask</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 3 -->
-          <div class="swiper-slide">
-            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-              <div class="flex justify-between items-start mb-4">
-                <div class="flex-1">
-                  <h3 class="text-xl text-gray-500 dark:text-gray-300 font-semibold mb-2">Weather Forecast App</h3>
-                  <p class="text-sm text-gray-500 mb-3">Forecasts weather entering a location name/Pincode</p>
-                </div>
-                <a href="https://github.com/Adithya280399/WeatherApp" target="_blank" 
-                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
-                  <i class="fab fa-github text-2xl"></i>
-                </a>
-              </div>
-              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
-                A dynamic full-stack Weather App that fetches real-time and forecast data based on user input or geolocation, with persistent storage and CRUD features.
-              </p>
-              <div class="flex flex-wrap gap-2 mt-auto">
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">HTML</span>
-                <span class="bg-purple-100 text-purple-800 dark:bg-purple-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
-                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
-                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
-                <span class="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Express.js</span>
-                <span class="bg-pink-100 text-pink-800 dark:bg-pink-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Project Card 4 -->
-          <div class="swiper-slide">
-            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-              <div class="flex justify-between items-start mb-4">
-                <div class="flex-1">
-                  <h3 class="text-xl text-gray-500 dark:text-gray-300 font-semibold mb-2">Claim Management System</h3>
-                  <p class="text-sm text-gray-500 mb-3">Web-based insurance claim tracking</p>
-                </div>
-                <a href="https://github.com/Adithya280399/Claim-Management-System" target="_blank" 
-                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
-                  <i class="fab fa-github text-2xl"></i>
-                </a>
-              </div>
-              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
-                Developed a web-based system for managing insurance claims efficiently, enabling automated tracking, approvals, and audit logging.
-              </p>
-              <div class="flex flex-wrap gap-2 mt-auto">
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">MySQL</span>
-                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Draw.io</span>
-                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Excel</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 5 -->
-          <div class="swiper-slide">
-            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-              <div class="flex justify-between items-start mb-4">
-                <div class="flex-1">
-                  <h3 class="text-xl text-gray-500 dark:text-gray-300 font-semibold mb-2">Fitness Tracker</h3>
-                  <p class="text-sm text-gray-500 mb-3">On going Project</p>
-                </div>
-                <a href="https://github.com/Adithya280399/FitnessTracker" target="_blank" 
-                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
-                  <i class="fab fa-github text-2xl"></i>
-                </a>
-              </div>
-              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
-                Working on a developing a personalized fitness tracker model which helps to track and suggest better mealplan and workplan using AI, accessible in phone and web.
-              </p>
-              <div class="flex flex-wrap gap-2 mt-auto">
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">HTML</span>
-                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Tailwind CDN</span>
-                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 6 -->
-          <div class="swiper-slide">
-            <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transform hover:scale-[1.02] transition-all duration-300 ease-in-out">
-              <div class="flex justify-between items-start mb-4">
-                <div class="flex-1">
-                  <h3 class="text-xl text-gray-500 dark:text-gray-300 font-semibold mb-2">My Portfolio</h3>
-                  <p class="text-sm text-gray-500 mb-3">E-portfolio</p>
-                </div>
-                <a href="https://github.com/Adithya280399/MyPortfolio" target="_blank" 
-                   class="text-gray-400 hover:text-black dark:hover:text-white ml-4 flex-shrink-0">
-                  <i class="fab fa-github text-2xl"></i>
-                </a>
-              </div>
-              <p class="text-sm text-gray-600 dark:text-gray-300 mb-6 flex-1">
-                Developed my portfolio to project my skills and experience using the skills I have gained.
-              </p>
-              <div class="flex flex-wrap gap-2 mt-auto">
-                <span class="bg-blue-100 text-blue-800 dark:bg-blue-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">HTML</span>
-                <span class="bg-green-100 text-green-800 dark:bg-green-700 dark:text-white px-3 py-1 rounded-full text-sm font-medium">Tailwind CDN</span>
-                <span class="bg-yellow-100 text-yellow-900 dark:bg-yellow-600 dark:text-white px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        
-        <!-- Navigation buttons -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        
-        <!-- Pagination -->
-        <div class="swiper-pagination"></div>
+<!-- Project dialog -->
+<dialog class="project-dialog" id="project-dialog" aria-labelledby="pd-title">
+  <div class="dialog-card">
+    <div class="dialog-hero" id="pd-hero">
+      <span class="grad-overlay" aria-hidden="true"></span>
+      <button class="icon-btn dialog-close" type="button" data-close aria-label="Close"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+      <p class="caption" id="pd-kind" style="opacity:.8;margin-bottom:12px"></p>
+      <h2 class="display-md" id="pd-title" style="max-width:20ch"></h2>
+    </div>
+    <div class="dialog-body">
+      <div id="pd-text" style="display:flex;flex-direction:column;gap:14px"></div>
+      <div>
+        <h4>Built with</h4>
+        <div class="tags" id="pd-tags"></div>
+      </div>
+      <div class="hero-cta" style="margin:0">
+        <a class="btn btn-primary" id="pd-repo" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg>View on GitHub</a>
+      </div>
+      <div class="dialog-nav">
+        <button class="btn btn-secondary btn-sm" type="button" id="pd-prev"><svg aria-hidden="true"><use href="#i-arrow-left"/></svg>Previous</button>
+        <button class="btn btn-secondary btn-sm" type="button" id="pd-next">Next<svg aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
       </div>
     </div>
-  </section>
+  </div>
+</dialog>
 
-  <!-- Certifications -->
-  <section id="certifications" class="py-20 px-6 max-w-4xl mx-auto fade-in">
-    <h2 class="text-3xl font-bold flex items-center gap-2">
-      <i data-feather="award" class="text-blue-500 w-6 h-6"></i>
-      <span class="underline-animation">Certifications</span>
-    </h2>
-    <ul class="mt-2">
-      <li><strong>Specialist Certification - Claimcenter 10.0 Configuration </strong> - Guidewire</li>
-      <li><strong>Associate Certification - InsuranceSuite 10.0 Developer</strong> - Guidewire</li>
-      <li><strong>InsuranceSuite 10.0 Fundamentals</strong> - Guidewire</li>
-      <li><strong>Azure Az 900</strong> - Microsoft</li>
-      <li><strong>Splunk Fundamentals</strong> - Splunk</li>
-      <li><strong>Campus connect foundation program</strong> - Infosys</li>
-    </ul>
-  </section>
-
-  <!-- Awards -->
-  <section id="awards" class="py-20 px-6 max-w-4xl mx-auto fade-in">
-    <h2 class="text-3xl font-bold flex items-center gap-2">
-      <i data-feather="star" class="text-yellow-500 w-6 h-6"></i>
-      <span class="underline-animation">Awards</span>
-    </h2>
-    <ul class="mt-2 list-disc list-inside text-m space-y-2">
-      <li><strong>Spot Award from EY</strong> for the dedication & perseverance to fulfill requirements and meet the targets on time</li>
-      <li>Received client appreciation for taking up automation work on short notice </li>
-    </ul>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-20 px-6 max-w-4xl mx-auto fade-in">
-    <h2 class="text-3xl font-bold mb-4"><span class="underline-animation">Get in Touch</span></h2>
-    <p class="text-lg mb-8 max-w-lg">
-      I'm currently looking for software internship opportunities. Whether you have a question or just want to say hi, I'll do my best to get back to you!
-    </p>
-    <a href="mailto:adithyasuresh470@gmail.com" class="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition">
-      Say Hello
-    </a>
-  </section>
- 
-  <footer class="py-8 text-center text-gray-500 text-sm fade-in">
-    <div class="flex justify-center gap-6 mt-4">
-      <!-- Email Icon -->
-      <a href="mailto:adithyasuresh470@gmail.com" target="_blank" aria-label="Gmail"
-        class="transition-transform transform hover:scale-125">
-        <img src="images/gmail-logo.png" alt="Gmail" class="h-8 w-8 shadow-sm" />
-      </a>
-
-      <!-- LinkedIn Icon -->
-      <a href="https://www.linkedin.com/in/adithya-suresh-044435166/" target="_blank" aria-label="LinkedIn"
-      class="transition-transform transform hover:scale-125">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 hover:text-blue-700 transition" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M4.98 3.5a2.5 2.5 0 11-.01 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3zM9 9h3.6v1.71h.05c.5-.9 1.75-1.85 3.6-1.85 3.85 0 4.56 2.53 4.56 5.82V21h-4v-5.4c0-1.29-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/>
-        </svg>
-      </a>
-  
-      <!-- GitHub Icon -->
-      <a href="https://github.com/adithya280399" target="_blank" aria-label="GitHub"
-      class="transition-transform transform hover:scale-125">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500 hover:text-gray transition" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 0a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6a3.2 3.2 0 00-1.3-1.7c-1-.7.1-.7.1-.7a2.5 2.5 0 011.8 1.2 2.6 2.6 0 003.5 1 2.6 2.6 0 01.8-1.6c-2.7-.3-5.5-1.3-5.5-5.9a4.6 4.6 0 011.2-3.2 4.2 4.2 0 01.1-3.2s1-.3 3.3 1.2a11.3 11.3 0 016 0C17 6 18 6.3 18 6.3a4.2 4.2 0 01.1 3.2 4.6 4.6 0 011.2 3.2c0 4.6-2.8 5.6-5.5 5.9a3 3 0 01.9 2.3v3.4c0 .3.2.7.8.6A12 12 0 0012 0z"/>
-        </svg>
-      </a>
+<!-- Command palette -->
+<dialog class="cmdk" id="cmdk" aria-label="Quick actions">
+  <div class="cmdk-card">
+    <div class="cmdk-search">
+      <svg aria-hidden="true"><use href="#i-search"/></svg>
+      <input class="cmdk-input" id="cmdk-input" type="text" placeholder="Search sections, projects, actions…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="cmdk-list" aria-autocomplete="list" />
+      <span class="kbd">Esc</span>
     </div>
-    <p class="mt-2">Designed & Built by Adithya Suresh</p>
-    <p class="mt-2">© 2026 All Rights Reserved</p>
-  </footer>
+    <div class="cmdk-list" id="cmdk-list" role="listbox"></div>
+    <div class="cmdk-empty" id="cmdk-empty">No results.</div>
+    <div class="cmdk-foot">
+      <span><span class="kbd">↑</span><span class="kbd">↓</span> navigate</span>
+      <span><span class="kbd">↵</span> select</span>
+    </div>
+  </div>
+</dialog>
 
-    <!-- Back to Top Button -->
-    <button id="top-btn" class="hidden fixed bottom-6 right-6 text-4xl text-blue-500 hover:text-blue-700 transition-transform transform hover:-translate-y-2">
-      <i class="fas fa-rocket" style="transform: rotate(-45deg);"></i>
-    </button> 
-  <script src="https://unpkg.com/feather-icons"></script>
-
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<!-- Feather Icons -->
-<script src="https://unpkg.com/feather-icons"></script>
-<script>
-      const swiper = new Swiper('.projects-swiper', {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      grabCursor: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        dynamicBullets: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 30,
-        },
-        1024: {
-          slidesPerView: 2,
-          spaceBetween: 40,
-        },
-      },
-    });
-
-  const floatingNav = document.getElementById('floating-nav');
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileDropdown = document.getElementById('mobile-dropdown');
-  let lastScrollY = window.scrollY;
-
-  // Scroll hide/show
-  window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
-    if (currentScrollY < 50) {
-      floatingNav.style.transform = 'translateX(-50%) translateY(0)';
-      floatingNav.style.opacity = '1';
-    } else if (currentScrollY < lastScrollY) {
-      floatingNav.style.transform = 'translateX(-50%) translateY(0)';
-      floatingNav.style.opacity = '1';
-    } else {
-      floatingNav.style.transform = 'translateX(-50%) translateY(-120%)';
-      floatingNav.style.opacity = '0';
-    }
-    lastScrollY = currentScrollY;
-    mobileDropdown.classList.remove('show');
-  });
-
-  // Mobile toggle — THIS is what's missing
-  mobileMenuBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    mobileDropdown.classList.toggle('show');
-  });
-
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    if (!floatingNav.contains(e.target)) {
-      mobileDropdown.classList.remove('show');
-    }
-  });
-
-  // Close on link click
-  mobileDropdown.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileDropdown.classList.remove('show');
-    });
-  });
-    // Add fade-in animation
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
-
-  feather.replace();
-</script>
-<script src="script.js">
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
